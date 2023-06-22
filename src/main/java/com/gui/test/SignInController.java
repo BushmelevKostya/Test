@@ -4,6 +4,8 @@ import com.gui.test.client.Authorizer;
 import com.gui.test.client.ClientExecutor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -39,6 +41,9 @@ public class SignInController {
 				Authorizer authorizer = new Authorizer();
 				String name = authorizer.sendAuthorizeRequest(password, username);
 				if (name.equals("")) setErrorMessage("Данные введены неверно!");
+				else {
+					changeScene();
+				}
 			} catch (IOException | ClassNotFoundException exception) {
 				setErrorMessage(exception.getMessage());
 			}
@@ -83,5 +88,14 @@ public class SignInController {
 		errorMessage.setManaged(true);
 		errorMessage.setVisible(true);
 		errorMessage.setText(message);
+	}
+	
+	public void changeScene() throws IOException {
+		var window = signInButton.getScene().getWindow();
+		Stage stage = WindowController.getStageFromWindow(window);
+		FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+		Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+		stage.setTitle("Hello!");
+		stage.setScene(scene);
 	}
 }
