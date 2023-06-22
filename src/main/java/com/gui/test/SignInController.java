@@ -12,6 +12,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.security.spec.ECField;
 import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 
@@ -32,10 +33,16 @@ public class SignInController {
 	private void signIn(ActionEvent event) {
 		var username = this.usernameField.getText();
 		var password = this.passwordField.getText();
-
-//		Authorizer authorizer = new Authorizer();
-//		authorizer.authorize();
-		validate(username, password);
+		
+		if (validate(username, password)) {
+			try {
+				Authorizer authorizer = new Authorizer();
+				String name = authorizer.sendAuthorizeRequest(password, username);
+				if (name.equals("")) setErrorMessage("Данные введены неверно!");
+			} catch (IOException | ClassNotFoundException exception) {
+				setErrorMessage(exception.getMessage());
+			}
+		}
 	}
 	
 	@FXML

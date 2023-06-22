@@ -162,7 +162,7 @@ public class Authorizer {
 				else break;
 			}
 				try{
-					name = sendAuthorizeRequest(password, login, name);
+					name = sendAuthorizeRequest(password, login);
 				} catch (ClassNotFoundException | UnknownHostException exception) {
 					System.out.println(exception.getMessage());
 				}
@@ -172,9 +172,9 @@ public class Authorizer {
 		System.out.printf("Здравствуйте, %s! \n", name);
 	}
 	
-	private String sendAuthorizeRequest(String password, String login, String name) throws ClassNotFoundException, IOException {
+	public String sendAuthorizeRequest(String password, String login) throws ClassNotFoundException, IOException {
 		String hash = getPasswordHash(password);
-		
+		String name = "";
 		try (DatagramSocket clientSocket = new DatagramSocket()) {
 			InetAddress address = InetAddress.getByName("localhost");
 			SenderChunk.sendAutorizeRequest(clientSocket, address, login, hash);
