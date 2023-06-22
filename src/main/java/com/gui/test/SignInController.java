@@ -1,5 +1,7 @@
 package com.gui.test;
 
+import com.gui.test.client.Authorizer;
+import com.gui.test.client.ClientExecutor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +11,8 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
+import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 
 public class SignInController {
@@ -28,11 +32,10 @@ public class SignInController {
 	private void signIn(ActionEvent event) {
 		var username = this.usernameField.getText();
 		var password = this.passwordField.getText();
-		
-//		if (this.validate(username, password)) {
-//			signInRequest(username, password, event);
-////            this.executorService.submit(() -> signInRequest(username, password, event));
-//		}
+
+//		Authorizer authorizer = new Authorizer();
+//		authorizer.authorize();
+		validate(username, password);
 	}
 	
 	@FXML
@@ -48,5 +51,30 @@ public class SignInController {
 	@FXML
 	public void onEnter(ActionEvent actionEvent) {
 		this.signIn(actionEvent);
+	}
+	
+	private boolean validate(String login, String password) {
+		if (login.equals("")) {
+			setErrorMessage("Логин не может быть пустой строкой!");
+			return false;
+		}
+		
+		if (password.equals("")) {
+			setErrorMessage("Пароль не может быть пустой строкой!");
+			return false;
+		}
+		
+		return true;
+//				name = sendAuthorizeRequest(password, login, name);
+//
+//		ClientExecutor.setLogin(login);
+//		ClientExecutor.setPassword(getPasswordHash(password));
+	}
+	
+	private void setErrorMessage(String message) {
+		infoMessage.setManaged(false);
+		errorMessage.setManaged(true);
+		errorMessage.setVisible(true);
+		errorMessage.setText(message);
 	}
 }

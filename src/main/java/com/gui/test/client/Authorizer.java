@@ -21,7 +21,7 @@ public class Authorizer {
 	public Authorizer() {
 	}
 	
-	protected void register() throws IOException, SQLException, NullPointerException {
+	public void register() throws IOException, SQLException, NullPointerException {
 		String login = null;
 		String name = null;
 		String password = null;
@@ -139,7 +139,7 @@ public class Authorizer {
 	}
 	
 	
-	protected void authorize() throws IOException, SQLException {
+	public void authorize() throws IOException, SQLException {
 		String login;
 		String password;
 		String name = null;
