@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+<VBox prefHeight="400.0" prefWidth="300.0" alignment="CENTER" maxHeight="-Infinity"
+      spacing="14.0"
+      maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gui.test.SignInController">
+    <Text text="Sign In" style="-fx-font-weight: bold;">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Text>
+    <TextField fx:id="usernameField" onAction="#onEnter" promptText="Username"/>
+    <PasswordField fx:id="passwordField" onAction="#onEnter" promptText="Password"/>
+    <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
+    <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
+    <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signIn"
+            text="Sign In">
+    </Button>
+    <Text fill="#404040" onMouseClicked="#showSignUpStage" strokeType="OUTSIDE"
+          strokeWidth="0.0" text="Don't have an account? Register">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Text>
+</VBox>
