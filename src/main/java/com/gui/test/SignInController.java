@@ -93,9 +93,9 @@ public class SignInController {
 	public void changeScene() throws IOException {
 		var window = signInButton.getScene().getWindow();
 		Stage stage = WindowController.getStageFromWindow(window);
-		FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-		Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-		stage.setTitle("Hello!");
+		FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("table-view.fxml"));
+		Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
+		stage.setTitle("Products");
 		stage.setScene(scene);
 	}
 }
