@@ -51,6 +51,20 @@ public class TableController implements Initializable {
 	private Button signInButton;
 	@FXML
 	private Text errorMessage;
+	@FXML
+	private VBox commands;
+	@FXML
+	private ComboBox<String> comboBox;
+	@FXML
+	private Button addButton;
+	@FXML
+	private Button removeButton;
+	@FXML
+	private Button saveButton;
+	@FXML
+	private Button closeButton;
+	@FXML
+	private Button updateButton;
 	
 	@FXML
 	private TableView<Product> tableView;
@@ -58,7 +72,6 @@ public class TableController implements Initializable {
 	public TableController() {
 		executorService = Executors.newSingleThreadExecutor();
 	}
-	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		buildTable();
