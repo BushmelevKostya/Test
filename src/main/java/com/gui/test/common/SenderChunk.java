@@ -84,4 +84,12 @@ public class SenderChunk {
 		request.setRequestType("AUTHORIZE");
 		sendPacket(request, clientSocket, address);
 	}
+	
+	public static void sendProductsRequest(DatagramSocket clientSocket, InetAddress address, String login, String password) throws IOException {
+		Request request = new Request(login, null, password);
+		request.setAccessToken(ClientExecutor.getAccessToken());
+		request.setRefreshToken(ClientExecutor.getRefreshToken());
+		request.setRequestType("COLLECTION");
+		sendPacket(request, clientSocket, address);
+	}
 }

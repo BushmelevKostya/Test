@@ -46,6 +46,7 @@ public class SignInController {
 				}
 			} catch (IOException | ClassNotFoundException exception) {
 				setErrorMessage(exception.getMessage());
+				System.out.println(exception.getMessage());
 			}
 		}
 	}

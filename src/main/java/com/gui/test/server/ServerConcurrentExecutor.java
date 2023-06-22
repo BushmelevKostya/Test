@@ -20,6 +20,7 @@ import java.nio.channels.Selector;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
@@ -84,9 +85,10 @@ public class ServerConcurrentExecutor {
 						register(request, response, migrations);
 					}
 					case "AUTHORIZE" -> {
-						
 						authorize(request, response, migrations);
-						
+					}
+					case "COLLECTION" -> {
+						sendProducts(request, response);
 					}
 					default -> {
 						post(request, response);
@@ -152,6 +154,33 @@ public class ServerConcurrentExecutor {
 			response.setAccessToken(JWTToken.generateAccessToken(login, name, password));
 			response.setRefreshToken(JWTToken.generateRefreshToken(login, name, password));
 		} else throw new UniqueException("Пользователь с таким логином уже существует!");
+	}
+	
+	private static void sendProducts(Request request, Response response) throws NoAuthorizedException, NoElementException, FalseValuesException, SQLException, UnsupportedEncodingException, UniqueException, ExitException {
+		String token = request.getAccessToken();
+		String login;
+		try {
+			login = JWTToken.verifyAccessToken(token);
+		} catch (JWTVerificationException exception) {
+			token = request.getRefreshToken();
+			try {
+				var result = JWTToken.verifyRefreshToken(token);
+				String newLogin = result.get("login");
+				String name = result.get("username");
+				String password = result.get("password");
+				
+				response.setAccessToken(JWTToken.generateAccessToken(newLogin, name, password));
+				response.setRefreshToken(JWTToken.generateRefreshToken(newLogin, name, password));
+				
+				throw new NoAuthorizedException("Срок вашего токена доступа истек, получен новый. Попробуйте еще раз");
+			} catch (JWTVerificationException e) {
+				throw new NoAuthorizedException("Вы не зарегистрированы!");
+			}
+		}
+		TreeMap<Integer, Product> collection = MainCollection.getCollection();
+		response.setProducts(collection);
+//		String answer = new CommandExecutor(request.getCommand().replace("insertScript", "insert"), request.getValue(), request.getProduct()).run(login);
+//		response.setAnswer(answer);
 	}
 	
 	private static void post(Request request, Response response) throws NoAuthorizedException, NoElementException, FalseValuesException, SQLException, UnsupportedEncodingException, UniqueException, ExitException {

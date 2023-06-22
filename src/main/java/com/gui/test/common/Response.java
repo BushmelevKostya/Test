@@ -3,13 +3,15 @@ package com.gui.test.common;
 import com.gui.test.common.product.Product;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class Response implements Serializable {
 	private Product product;
 	private String answer;
 	private boolean status = false;
 	private String name;
-	
+	private TreeMap<Integer, Product> products;
 	private String accessToken;
 	private String refreshToken;
 	
@@ -68,6 +70,12 @@ public class Response implements Serializable {
 		this.name = name;
 	}
 	
+	public TreeMap<Integer, Product> getProducts() {
+		return products;
+	}
 	
+	public void setProducts(TreeMap<Integer, Product> products) {
+		this.products = products;
+	}
 }
 
