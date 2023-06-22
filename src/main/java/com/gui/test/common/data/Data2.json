@@ -1,0 +1,44 @@
+{
+  "4": {
+    "id": 4,
+    "name": "4",
+    "coordinates": {
+      "x": 4,
+      "y": 4
+    },
+    "creationDate": "2023-03-25T11:49:23.674516400+03:00[Europe/Moscow]",
+    "price": 4.0,
+    "partNumber": "4",
+    "manufactureCost": 0,
+    "unitOfMeasure": "CENTIMETERS",
+    "manufacturer": {
+      "id": 294,
+      "name": "4",
+      "fullName": "4",
+      "annualTurnover": 4,
+      "employeesCount": 4,
+      "type": "COMMERCIAL"
+    }
+  },
+  "123": {
+    "id": 123,
+    "name": "Alexey",
+    "coordinates": {
+      "x": 12345,
+      "y": 123
+    },
+    "creationDate": "2023-04-03T19:57:37.504551600+03:00[Europe/Moscow]",
+    "price": 33333.0,
+    "partNumber": "Q123",
+    "manufactureCost": 10,
+    "unitOfMeasure": "GRAMS",
+    "manufacturer": {
+      "id": 922,
+      "name": "SPRL",
+      "fullName": "Pluritech SPRL",
+      "annualTurnover": 100000,
+      "employeesCount": 75,
+      "type": "COMMERCIAL"
+    }
+  }
+}

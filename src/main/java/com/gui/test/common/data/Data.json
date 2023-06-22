@@ -1,0 +1,86 @@
+{
+  "4": {
+    "id": 4,
+    "name": "4",
+    "coordinates": {
+      "x": 4,
+      "y": 4
+    },
+    "creationDate": "2023-03-25T11:57:50.519601300+03:00[Europe/Moscow]",
+    "price": 4.0,
+    "partNumber": "44",
+    "manufactureCost": 4,
+    "unitOfMeasure": "GRAMS",
+    "manufacturer": {
+      "id": 292,
+      "name": "4",
+      "fullName": "44",
+      "annualTurnover": 4,
+      "employeesCount": 1,
+      "type": "COMMERCIAL"
+    }
+  },
+  "5": {
+    "id": 5,
+    "name": "5",
+    "coordinates": {
+      "x": 5,
+      "y": 5
+    },
+    "creationDate": "2023-03-25T12:06:36.896240900+03:00[Europe/Moscow]",
+    "price": 5.0,
+    "partNumber": "5",
+    "manufactureCost": 5,
+    "unitOfMeasure": "CENTIMETERS",
+    "manufacturer": {
+      "id": 865,
+      "name": "5",
+      "fullName": ";fks",
+      "annualTurnover": 5,
+      "employeesCount": 5,
+      "type": "COMMERCIAL"
+    }
+  },
+  "9": {
+    "id": 9,
+    "name": "9",
+    "coordinates": {
+      "x": 9,
+      "y": 9
+    },
+    "creationDate": "2023-03-25T12:08:18.683428500+03:00[Europe/Moscow]",
+    "price": 9.0,
+    "partNumber": "9",
+    "manufactureCost": 9,
+    "unitOfMeasure": "LITERS",
+    "manufacturer": {
+      "id": 24,
+      "name": "7",
+      "fullName": null,
+      "annualTurnover": 7,
+      "employeesCount": 7,
+      "type": "COMMERCIAL"
+    }
+  },
+  "10": {
+    "id": 10,
+    "name": "Битоку",
+    "coordinates": {
+      "x": 10,
+      "y": 70
+    },
+    "creationDate": "2023-03-25T12:25:54.873091100+03:00[Europe/Moscow]",
+    "price": 7898.0,
+    "partNumber": "5",
+    "manufactureCost": 1000,
+    "unitOfMeasure": "GRAMS",
+    "manufacturer": {
+      "id": 351,
+      "name": "HW",
+      "fullName": "Hobby World",
+      "annualTurnover": 465,
+      "employeesCount": 9889,
+      "type": "TRUST"
+    }
+  }
+}

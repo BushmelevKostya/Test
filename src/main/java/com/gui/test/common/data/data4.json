@@ -1,0 +1,23 @@
+{
+  "4545": {
+    "id": 4545,
+    "name": "kikjj",
+    "coordinates": {
+      "x": -229,
+      "y": 5
+    },
+    "creationDate": "2023-03-25T06:51:01.120607500+03:00[Europe/Moscow]",
+    "price": 565.5,
+    "partNumber": "5",
+    "manufactureCost": 0.0,
+    "unitOfMeasure": "CENTIMETERS",
+    "manufacturer": {
+      "id": 888,
+      "name": "dsdsf",
+      "fullName": "dksfkd",
+      "annualTurnover": 4,
+      "employeesCount": 1,
+      "type": "TRUST"
+    }
+  }
+}

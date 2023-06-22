@@ -1,0 +1,23 @@
+{
+  "1": {
+    "id": 1,
+    "name": "f",
+    "coordinates": {
+      "x": 0,
+      "y": 4
+    },
+    "creationDate": "2023-03-24T16:15:56.066908100+03:00[Europe/Moscow]",
+    "price": 4.0,
+    "partNumber": "44",
+    "manufactureCost": 0.0,
+    "unitOfMeasure": "MILLILITERS",
+    "manufacturer": {
+      "id": 916,
+      "name": "4",
+      "fullName": "4",
+      "annualTurnover": 4,
+      "employeesCount": 4,
+      "type": "COMMERCIAL"
+    }
+  }
+}
