@@ -30,12 +30,11 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.URL;
 import java.security.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static java.lang.Thread.sleep;
 
@@ -77,7 +76,7 @@ public class TableController implements Initializable {
 	private Button addButtonForm;
 	@FXML
 	private TableView<Product> tableView;
-	
+	private ArrayList<Product> allProducts;
 	public TableController() {;
 		executorService = Executors.newSingleThreadExecutor();
 	}
@@ -96,6 +95,9 @@ public class TableController implements Initializable {
 			}
 		});
 		thread.start();
+		
+//		filterTextField.textProperty().addListener((observable, oldValue, newValue) -> applyFilter(newValue));
+//		sortComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> applySort(newValue));
 	}
 	public void loadProducts() {
 		try (DatagramSocket clientSocket = new DatagramSocket()) {
@@ -104,12 +106,61 @@ public class TableController implements Initializable {
 			
 			Response response = RecipientChunk.getResponse(clientSocket);
 			var collection = response.getProducts();
-			List<Product> groupList = new ArrayList<>(collection.values());
+			ArrayList<Product> groupList = new ArrayList<>(collection.values());
+			allProducts = groupList;
 			ObservableList<Product> observableList = getProducts(groupList);
 			tableView.setItems(observableList);
 		} catch (IOException | ClassNotFoundException exception) {
 		setErrorMessage(exception.getMessage());
 		}
+	}
+	
+	private void applyFilter(String filterValue) {
+		Predicate<Product> filterPredicate = createFilterPredicate(filterValue);
+		List<Product> filteredList = allProducts.stream()
+				.filter(filterPredicate)
+				.collect(Collectors.toList());
+		tableView.setItems(FXCollections.observableArrayList(filteredList));
+	}
+	
+	private Predicate<Product> createFilterPredicate(String filterValue) {
+		return product -> {
+			if (filterValue == null || filterValue.isEmpty()) {
+				return true; // No filter, return all
+			}
+			
+			String lowerCaseFilterValue = filterValue.toLowerCase();
+			
+			return product.getName().toLowerCase().contains(lowerCaseFilterValue)
+					|| product.getManufacturer().getName().toLowerCase().contains(lowerCaseFilterValue)
+					|| product.getManufacturer().getFullName().toLowerCase().contains(lowerCaseFilterValue);
+		};
+	}
+	
+	private void applySort(String columnName) {
+		if (columnName == null || columnName.isEmpty()) {
+			return; // No column selected, do nothing
+		}
+		
+		Comparator<Product> comparator;
+		switch (columnName) {
+			case "ID":
+				comparator = Comparator.comparing(Product::getId);
+				break;
+			case "Name":
+				comparator = Comparator.comparing(Product::getName);
+				break;
+			case "Price":
+				comparator = Comparator.comparing(Product::getPrice);
+				break;
+			default:
+				return; // Invalid column selected, do nothing
+		}
+		
+		List<Product> sortedList = allProducts.stream()
+				.sorted(comparator)
+				.collect(Collectors.toList());
+		tableView.setItems(FXCollections.observableArrayList(sortedList));
 	}
 	
 	private void showInfoMessage(String message) {

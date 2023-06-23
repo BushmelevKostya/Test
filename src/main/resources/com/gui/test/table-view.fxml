@@ -12,8 +12,8 @@
             fx:controller="com.gui.test.TableController">
     <left>
         <VBox spacing="10">
-            <TextField fx:id="filterTextField" promptText="Фильтр по значению"/>
-            <ComboBox fx:id="sortComboBox" promptText="Сортировка по колонке"/>
+<!--            <TextField fx:id="filterTextField" promptText="Фильтр по значению"/>-->
+<!--            <ComboBox fx:id="sortComboBox" promptText="Сортировка по колонке"/>-->
             <fx:include fx:id="commands" source="commands.fxml"/>
         </VBox>
     </left>
