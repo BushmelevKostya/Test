@@ -2,6 +2,7 @@ package com.gui.test.client;
 
 import com.gui.test.common.*;
 import com.gui.test.common.exception.*;
+import com.gui.test.common.product.Product;
 
 import java.io.*;
 import java.net.*;
@@ -15,11 +16,19 @@ public class ClientExecutor {
 	private static BufferedReader br;
 	private static String login;
 	private static String password;
+	private DatagramSocket clientSocket;
+	private InetAddress address;
 	
 	protected static String accessToken;
 	protected static String refreshToken;
 	
 	public ClientExecutor() {
+		try {
+			this.clientSocket = new DatagramSocket();
+			this.address = InetAddress.getByName("localhost");
+		} catch (SocketException | UnknownHostException exception) {
+			System.out.println(exception.getMessage());
+		}
 	}
 	
 	/**
@@ -47,9 +56,30 @@ public class ClientExecutor {
 				} catch (ExitException ignored) {
 				}
 			}
-		} catch (IOException exception){
+		} catch (IOException exception) {
 			System.out.println(exception.getMessage());
 		}
+	}
+	
+	public void perform(Product product, String command, String value) throws UniqueException, NullStringException, FalseTypeException, IOException, InfiniteException, ExitException, FalseValuesException, ClassNotFoundException {
+		SenderChunk.sendRequest(clientSocket, address, command, value, product);
+		Response response = RecipientChunk.getResponse(clientSocket);
+		if (response == null) throw new NullPointerException("Ответ от сервера не был получен!");
+		System.out.println("From Server : " + response.getAnswer());
+		String accessToken = response.getAccessToken();
+		String refreshToken = response.getRefreshToken();
+		if (accessToken != null) ClientExecutor.setAccessToken(accessToken);
+		if (refreshToken != null) ClientExecutor.setRefreshToken(refreshToken);
+	}
+	public void perform(DatagramSocket clientSocket, InetAddress address, String command, String value) throws UniqueException, NullStringException, FalseTypeException, IOException, InfiniteException, ExitException, FalseValuesException, ClassNotFoundException {
+		SenderChunk.sendRequest(clientSocket, address, command, value);
+		Response response = RecipientChunk.getResponse(clientSocket);
+		if (response == null) throw new NullPointerException("Ответ от сервера не был получен!");
+		System.out.println("From Server : " + response.getAnswer());
+		String accessToken = response.getAccessToken();
+		String refreshToken = response.getRefreshToken();
+		if (accessToken != null) ClientExecutor.setAccessToken(accessToken);
+		if (refreshToken != null) ClientExecutor.setRefreshToken(refreshToken);
 	}
 	
 	public void execute(DatagramSocket clientSocket, InetAddress address, String string) throws ExitException {
@@ -61,14 +91,7 @@ public class ClientExecutor {
 			if (value != null & !command.equals("execute")) validator.isPositive(value, "Id");
 			if (validator.check(string) && validator.checkCommand(command) && validator.checkParam(command, value)) {
 				if (!command.equals("execute")) {
-					SenderChunk.sendRequest(clientSocket, address, command, value);
-					Response response = RecipientChunk.getResponse(clientSocket);
-					if (response == null) throw new NullPointerException("Ответ от сервера не был получен!");
-					System.out.println("From Server : " + response.getAnswer());
-					String accessToken = response.getAccessToken();
-					String refreshToken = response.getRefreshToken();
-					if (accessToken != null) ClientExecutor.setAccessToken(accessToken);
-					if (refreshToken != null) ClientExecutor.setRefreshToken(refreshToken);
+					perform(clientSocket, address, command, value);
 				} else {
 					commandMap.get(command).execute(value);
 				}
@@ -76,7 +99,8 @@ public class ClientExecutor {
 		} catch (EOFException exception) {
 			System.out.println("Сервер недоступен, проверьте соединение!");
 		} catch (IOException | ClassNotFoundException | FalseTypeException | FalseValuesException |
-		         NumberFormatException | UniqueException | NullStringException | InfiniteException | NullPointerException exception) {
+		         NumberFormatException | UniqueException | NullStringException | InfiniteException |
+		         NullPointerException exception) {
 			System.out.println(exception.getMessage());
 		}
 	}

@@ -43,22 +43,20 @@ public class CommandsController{
 	
 	@FXML
 	private void add() {
-//		try {
-			System.out.println(1);
-			addButton.setText("новыцй текст");
-//			Stage formStage = new Stage();
-//			formStage.initOwner(addButton.getScene().getWindow());
-//			formStage.initModality(Modality.APPLICATION_MODAL);
-//
-//			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view.fxml"));
-//			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
-//			formStage.setTitle("Insert");
-//			formStage.setScene(scene);
-//
-//			formStage.show();
-//		} catch (IOException exception) {
-//			setErrorMessage(exception.getMessage());
-//		}
+		try {
+			Stage formStage = new Stage();
+			formStage.initOwner(addButton.getScene().getWindow());
+			formStage.initModality(Modality.APPLICATION_MODAL);
+
+			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view.fxml"));
+			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
+			formStage.setTitle("Insert");
+			formStage.setScene(scene);
+
+			formStage.show();
+		} catch (IOException exception) {
+			setErrorMessage(exception.getMessage());
+		}
 	}
 	
 	private void setErrorMessage(String message) {

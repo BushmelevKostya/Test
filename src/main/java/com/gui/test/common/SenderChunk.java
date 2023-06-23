@@ -43,6 +43,17 @@ public class SenderChunk {
 		request.setRequestType("POST");
 		sendPacket(request, clientSocket, address);
 	}
+	public static void sendRequest(DatagramSocket clientSocket, InetAddress address, String command, String value, Product product) throws FalseTypeException, IOException, ExitException, FalseValuesException, UniqueException, NullStringException, InfiniteException {
+		Request request = new Request(command, value);
+		var executeCommand = commandMap.get(command);
+		if (product != null) {
+			request.setProduct(product);
+		}
+		request.setAccessToken(ClientExecutor.getAccessToken());
+		request.setRefreshToken(ClientExecutor.getRefreshToken());
+		request.setRequestType("POST");
+		sendPacket(request, clientSocket, address);
+	}
 	
 	public static void sendResponse(Response response, DatagramChannel datagramChannel, InetSocketAddress clientAddress) throws IOException, ExitException{
 		byte[] byteResponse = serializator.serializeObject(response);
