@@ -136,7 +136,20 @@ public class CommandsController implements Serializable {
 	
 	@FXML
 	private void replaceIfLower() {
-	
+		try {
+			Stage formStage = new Stage();
+			formStage.initOwner(insertButton.getScene().getWindow());
+			formStage.initModality(Modality.APPLICATION_MODAL);
+			
+			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view-3.fxml"));
+			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
+			formStage.setTitle("Id");
+			formStage.setScene(scene);
+			
+			formStage.show();
+		} catch (IOException exception) {
+			setErrorMessage(exception.getMessage());
+		}
 	}
 	
 	@FXML
