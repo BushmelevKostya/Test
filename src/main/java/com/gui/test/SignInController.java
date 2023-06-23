@@ -43,6 +43,7 @@ public class SignInController {
 				String name = authorizer.sendAuthorizeRequest(password, username);
 				if (name.equals("")) setErrorMessage("Данные введены неверно!");
 				else {
+					TableController.setUserField(username);
 					changeScene();
 				}
 			} catch (IOException | ClassNotFoundException exception) {
@@ -80,10 +81,6 @@ public class SignInController {
 		}
 		
 		return true;
-//				name = sendAuthorizeRequest(password, login, name);
-//
-//		ClientExecutor.setLogin(login);
-//		ClientExecutor.setPassword(getPasswordHash(password));
 	}
 	
 	private void setErrorMessage(String message) {

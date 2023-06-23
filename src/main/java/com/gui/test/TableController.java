@@ -40,10 +40,12 @@ import java.util.concurrent.Executors;
 import static java.lang.Thread.sleep;
 
 public class TableController implements Initializable {
-	
+	private static String username;
 	private final ExecutorService executorService;
 	@FXML
 	public Text infoMessage;
+	@FXML
+	public Label userField = new Label();
 	@FXML
 	public Label titleText;
 	@FXML
@@ -72,12 +74,12 @@ public class TableController implements Initializable {
 	@FXML
 	private TableView<Product> tableView;
 	
-	public TableController() {
+	public TableController() {;
 		executorService = Executors.newSingleThreadExecutor();
 	}
-	
 	@Override
 	public void initialize(URL url, ResourceBundle rb)  {
+		userField.setText(username);
 		buildTable();
 		Thread thread = new Thread(() -> {
 			while (true) {
@@ -197,5 +199,9 @@ public class TableController implements Initializable {
 		errorMessage.setManaged(true);
 		errorMessage.setVisible(true);
 		errorMessage.setText(message);
+	}
+	
+	public static void setUserField(String username) {
+		TableController.username = username;
 	}
 }
