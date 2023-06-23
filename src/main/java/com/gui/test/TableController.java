@@ -37,6 +37,8 @@ import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static java.lang.Thread.sleep;
+
 public class TableController implements Initializable {
 	
 	private final ExecutorService executorService;
@@ -75,9 +77,19 @@ public class TableController implements Initializable {
 	}
 	
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {
+	public void initialize(URL url, ResourceBundle rb)  {
 		buildTable();
-		executorService.submit(this::loadProducts);
+		Thread thread = new Thread(() -> {
+			while (true) {
+				executorService.submit(this::loadProducts);
+				try {
+					sleep(1000);
+				} catch (InterruptedException exception) {
+					setErrorMessage(exception.getMessage());
+				}
+			}
+		});
+		thread.start();
 	}
 	public void loadProducts() {
 		try (DatagramSocket clientSocket = new DatagramSocket()) {
