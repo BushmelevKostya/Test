@@ -49,6 +49,10 @@ public class TableController implements Initializable {
 	@FXML
 	public Label titleText;
 	@FXML
+	private TextField filterTextField;
+	@FXML
+	private ComboBox<String> sortComboBox;
+	@FXML
 	public VBox sidebar;
 	Window window;
 	@FXML

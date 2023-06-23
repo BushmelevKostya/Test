@@ -7,11 +7,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.gui.test.TableController">
     <left>
-<!--        <TextField fx:id="userField" promptText="Введите значение" />-->
-        <fx:include fx:id="commands" source="commands.fxml"/>
+        <VBox spacing="10">
+            <TextField fx:id="filterTextField" promptText="Фильтр по значению"/>
+            <ComboBox fx:id="sortComboBox" promptText="Сортировка по колонке"/>
+            <fx:include fx:id="commands" source="commands.fxml"/>
+        </VBox>
     </left>
     <right>
         <VBox alignment="TOP_CENTER" spacing="20.0">

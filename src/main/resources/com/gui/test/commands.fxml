@@ -8,19 +8,6 @@
 
 <?import javafx.scene.text.Text?>
 <VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0" fx:controller="com.gui.test.CommandsController">
-    <ComboBox fx:id="comboBox" promptText="Выберите действие">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <Button text="Insert" mnemonicParsing="false" onAction="#insert"/>
-                <Button text="Clear" mnemonicParsing="false" onAction="#clear"/>
-                <Button text="Remove" mnemonicParsing="false" onAction="#remove"/>
-                <Button text="RemoveLowerKey" mnemonicParsing="false" onAction="#removeLowerKey"/>
-                <Button text="ReplaceIfGreater" mnemonicParsing="false" onAction="#replaceIfGreater"/>
-                <Button text="ReplaceIfLower" mnemonicParsing="false" onAction="#replaceIfLower"/>
-                <Button text="Update" mnemonicParsing="false" onAction="#update"/>
-            </FXCollections>
-        </items>
-    </ComboBox>
     <Button fx:id="insertButton" text="Insert" onAction="#insert"/>
     <Button fx:id="clearButton" text="Clear" onAction="#clear"/>
     <Button fx:id="RemoveButton" text="Remove" onAction="#remove"/>
