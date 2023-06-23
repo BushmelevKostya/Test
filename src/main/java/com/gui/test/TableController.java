@@ -76,7 +76,7 @@ public class TableController implements Initializable {
 	private Button addButtonForm;
 	@FXML
 	private TableView<Product> tableView;
-	private ArrayList<Product> allProducts;
+	private static ArrayList<Product> allProducts;
 	public TableController() {;
 		executorService = Executors.newSingleThreadExecutor();
 	}
@@ -258,5 +258,9 @@ public class TableController implements Initializable {
 	
 	public static void setUserField(String username) {
 		TableController.username = username;
+	}
+	
+	public static ArrayList<Product> getAllProduct() {
+		return allProducts;
 	}
 }
