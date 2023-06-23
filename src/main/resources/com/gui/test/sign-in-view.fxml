@@ -25,7 +25,7 @@
             text="Sign In">
     </Button>
     <Text fill="#404040" onMouseClicked="#showSignUpStage" strokeType="OUTSIDE"
-          strokeWidth="0.0" text="Don't have an account? Register">
+          strokeWidth="0.0" text="%signIn.doNotHaveAccount">
         <cursor>
             <Cursor fx:constant="HAND"/>
         </cursor>
