@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.text.Text?>
+<VBox fx:id="formLayout" spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gui.test.FormViewController2">
+    <children>
+        <Label text="Id запрашиваемого элемента:"/>
+        <TextField fx:id="idField"/>
+
+        <Label text="Имя:"/>
+        <TextField fx:id="nameField"/>
+
+        <Label text="X:"/>
+        <TextField fx:id="xField"/>
+
+        <Label text="Y:"/>
+        <TextField fx:id="yField"/>
+
+        <Label text="Price:"/>
+        <TextField fx:id="priceField"/>
+
+        <Label text="Part Number:"/>
+        <TextField fx:id="partNumberField"/>
+
+        <Label text="Manufacture Cost:"/>
+        <TextField fx:id="manufactureCostField"/>
+
+        <Label text="Unit Of Measure:"/>
+        <ComboBox fx:id="unitComboBox" promptText="Выберите единицу измерения">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="GRAMS"/>
+                    <String fx:value="CENTIMETERS"/>
+                    <String fx:value="LITERS"/>
+                    <String fx:value="MILLILITERS"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <Label text="Organization Name:"/>
+        <TextField fx:id="organizationNameField"/>
+
+        <Label text="Organization Fullname:"/>
+        <TextField fx:id="organizationFullnameField"/>
+
+        <Label text="Annual Turnover:"/>
+        <TextField fx:id="annualTurnoverField"/>
+
+        <Label text="Employees Count:"/>
+        <TextField fx:id="employeesCountField"/>
+
+        <Label text="Organization Type:"/>
+        <ComboBox fx:id="organizationTypeComboBox" promptText="Выберите тип организации">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="COMMERCIAL"/>
+                    <String fx:value="GOVERNMENT"/>
+                    <String fx:value="LITERS"/>
+                    <String fx:value="PRIVATE_LIMITED_COMPANY"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <Button fx:id="addButtonForm" text="Добавить" onAction="#add"/>
+    </children>
+    <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
+    <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
+</VBox>
