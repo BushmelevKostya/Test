@@ -1,4 +1,3 @@
-
 package com.gui.test;
 
 import com.gui.test.client.ClientExecutor;
@@ -7,7 +6,6 @@ import com.gui.test.common.product.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;

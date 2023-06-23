@@ -9,13 +9,19 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0" fx:controller="com.gui.test.CommandsController">
     <HBox spacing="10.0">
-        <ComboBox fx:id="comboBox" promptText="Выберите действие">
+        <ComboBox fx:id="comboBox" promptText="Выберите действие" onAction="#handleComboBoxAction">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <Button text="Добавить" mnemonicParsing="false" onAction="#add"/>
+                    <Button text="Insert" mnemonicParsing="false" onAction="#add"/>
+                    <Button text="Clear" mnemonicParsing="false" onAction="#clear"/>
+                    <Button text="Remove" mnemonicParsing="false" onAction="#remove"/>
+                    <Button text="RemoveLowerKey" mnemonicParsing="false" onAction="#removeLowerKey"/>
+                    <Button text="ReplaceIfGreater" mnemonicParsing="false" onAction="#replaceIfGreater"/>
+                    <Button text="ReplaceIfLower" mnemonicParsing="false" onAction="#replaceIfLower"/>
+                    <Button text="Update" mnemonicParsing="false" onAction="#update"/>
                 </FXCollections>
             </items>
         </ComboBox>
-        <Button fx:id="addButton" text="Добавить" onAction="#add"/>
+        <Button fx:id="executeButton" text="Insert" onAction="#add"/>
     </HBox>
 </VBox>

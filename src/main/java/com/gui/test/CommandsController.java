@@ -14,10 +14,11 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CommandsController{
+public class CommandsController implements Serializable {
 	@FXML
 	public Text infoMessage;
 	@FXML
@@ -25,34 +26,26 @@ public class CommandsController{
 	@FXML
 	private ComboBox<String> comboBox;
 	@FXML
-	private Button addButton;
+	private Button executeButton;
 	@FXML
 	private TextField usernameField;
 	@FXML
 	private TextField passwordField;
 	@FXML
 	private Button signInButton;
-//	@FXML
-//	private Button removeButton;
-//	@FXML
-//	private Button saveButton;
-//	@FXML
-//	private Button closeButton;
-//	@FXML
-//	private Button updateButton;
 	
 	@FXML
 	private void add() {
 		try {
 			Stage formStage = new Stage();
-			formStage.initOwner(addButton.getScene().getWindow());
+			formStage.initOwner(executeButton.getScene().getWindow());
 			formStage.initModality(Modality.APPLICATION_MODAL);
-
+			
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view.fxml"));
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
 			formStage.setTitle("Insert");
 			formStage.setScene(scene);
-
+			
 			formStage.show();
 		} catch (IOException exception) {
 			setErrorMessage(exception.getMessage());
@@ -64,5 +57,40 @@ public class CommandsController{
 		errorMessage.setManaged(true);
 		errorMessage.setVisible(true);
 		errorMessage.setText(message);
+	}
+	
+	@FXML
+	private void clear() {
+	
+	}
+	
+	@FXML
+	private void remove() {
+	
+	}
+	
+	@FXML
+	private void removeLowerKey() {
+	
+	}
+	
+	@FXML
+	private void replaceIfGreater() {
+	
+	}
+	
+	@FXML
+	private void replaceIfLower() {
+	
+	}
+	
+	@FXML
+	private void update() {
+	
+	}
+	
+	@FXML
+	private void handleComboBoxAction() {
+	
 	}
 }

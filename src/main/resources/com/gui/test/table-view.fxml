@@ -17,7 +17,7 @@
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
             </padding>
 
-            <Label fx:id="titleText" text="Группы"/>
+            <Label fx:id="titleText" text="Продукты"/>
             <TableView fx:id="tableView"/>
             <Text fx:id="errorMessage" fill="#F00"/>
         </VBox>
