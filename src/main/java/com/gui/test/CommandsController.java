@@ -77,7 +77,16 @@ public class CommandsController implements Serializable {
 	
 	@FXML
 	private void clear() {
-	
+		String commandName = "clear";
+		String value = null;
+		Product product = null;
+		ClientExecutor clientExecutor = ClientExecutor.getClientExecutor();
+		try{
+			clientExecutor.perform(product, commandName, value);
+		} catch (IOException | UniqueException | NullStringException | FalseTypeException | InfiniteException |
+		         ExitException | FalseValuesException | ClassNotFoundException exception) {
+			setErrorMessage(exception.getMessage());
+		}
 	}
 	
 	@FXML
@@ -154,6 +163,19 @@ public class CommandsController implements Serializable {
 	
 	@FXML
 	private void update() {
-	
+		try {
+			Stage formStage = new Stage();
+			formStage.initOwner(insertButton.getScene().getWindow());
+			formStage.initModality(Modality.APPLICATION_MODAL);
+			
+			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view-4.fxml"));
+			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
+			formStage.setTitle("Id");
+			formStage.setScene(scene);
+			
+			formStage.show();
+		} catch (IOException exception) {
+			setErrorMessage(exception.getMessage());
+		}
 	}
 }
