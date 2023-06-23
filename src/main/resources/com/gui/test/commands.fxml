@@ -2,26 +2,29 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.collections.FXCollections?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0" fx:controller="com.gui.test.CommandsController">
-    <HBox spacing="10.0">
-        <ComboBox fx:id="comboBox" promptText="Выберите действие" onAction="#handleComboBoxAction">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <Button text="Insert" mnemonicParsing="false" onAction="#add"/>
-                    <Button text="Clear" mnemonicParsing="false" onAction="#clear"/>
-                    <Button text="Remove" mnemonicParsing="false" onAction="#remove"/>
-                    <Button text="RemoveLowerKey" mnemonicParsing="false" onAction="#removeLowerKey"/>
-                    <Button text="ReplaceIfGreater" mnemonicParsing="false" onAction="#replaceIfGreater"/>
-                    <Button text="ReplaceIfLower" mnemonicParsing="false" onAction="#replaceIfLower"/>
-                    <Button text="Update" mnemonicParsing="false" onAction="#update"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
-        <Button fx:id="executeButton" text="Insert" onAction="#add"/>
-    </HBox>
+    <ComboBox fx:id="comboBox" promptText="Выберите действие">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Button text="Insert" mnemonicParsing="false" onAction="#insert"/>
+                <Button text="Clear" mnemonicParsing="false" onAction="#clear"/>
+                <Button text="Remove" mnemonicParsing="false" onAction="#remove"/>
+                <Button text="RemoveLowerKey" mnemonicParsing="false" onAction="#removeLowerKey"/>
+                <Button text="ReplaceIfGreater" mnemonicParsing="false" onAction="#replaceIfGreater"/>
+                <Button text="ReplaceIfLower" mnemonicParsing="false" onAction="#replaceIfLower"/>
+                <Button text="Update" mnemonicParsing="false" onAction="#update"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <Button fx:id="insertButton" text="Insert" onAction="#insert"/>
+    <Button fx:id="clearButton" text="Clear" onAction="#clear"/>
+    <Button fx:id="RemoveButton" text="Remove" onAction="#remove"/>
+    <Button fx:id="RemoveLowerKeyButton" text="RemoveLowerKey" onAction="#removeLowerKey"/>
+    <Button fx:id="ReplaceIfGreaterButton" text="ReplaceIfGreater" onAction="#replaceIfGreater"/>
+    <Button fx:id="ReplaceIfLowerButton" text="ReplaceIfLower" onAction="#replaceIfLower"/>
+    <Button fx:id="UpdateButton" text="Update" onAction="#update"/>
 </VBox>

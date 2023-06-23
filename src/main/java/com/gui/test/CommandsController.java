@@ -26,7 +26,19 @@ public class CommandsController implements Serializable {
 	@FXML
 	private ComboBox<String> comboBox;
 	@FXML
-	private Button executeButton;
+	private Button insertButton;
+	@FXML
+	private Button clearButton;
+	@FXML
+	private Button RemoveButton;
+	@FXML
+	private Button RemoveLowerKeyButton;
+	@FXML
+	private Button ReplaceIfGreaterButton;
+	@FXML
+	private Button ReplaceIfLowerButton;
+	@FXML
+	private Button UpdateButton;
 	@FXML
 	private TextField usernameField;
 	@FXML
@@ -35,10 +47,10 @@ public class CommandsController implements Serializable {
 	private Button signInButton;
 	
 	@FXML
-	private void add() {
+	private void insert() {
 		try {
 			Stage formStage = new Stage();
-			formStage.initOwner(executeButton.getScene().getWindow());
+			formStage.initOwner(insertButton.getScene().getWindow());
 			formStage.initModality(Modality.APPLICATION_MODAL);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view.fxml"));
@@ -86,11 +98,6 @@ public class CommandsController implements Serializable {
 	
 	@FXML
 	private void update() {
-	
-	}
-	
-	@FXML
-	private void handleComboBoxAction() {
 	
 	}
 }
