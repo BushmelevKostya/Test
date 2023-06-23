@@ -7,20 +7,16 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0">
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0" fx:controller="com.gui.test.CommandsController">
     <HBox spacing="10.0">
         <ComboBox fx:id="comboBox" promptText="Выберите действие">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:id="add" fx:value="Добавить"/>
-                    <String fx:id="remove" fx:value="Удалить"/>
-                    <String fx:id="update" fx:value="Редактировать"/>
-                    <String fx:id="save" fx:value="Сохранить"/>
-                    <String fx:id="close" fx:value="Закрыть"/>
+                    <Button text="Добавить" mnemonicParsing="false" onAction="#add"/>
                 </FXCollections>
             </items>
         </ComboBox>
-        <Button text="Добавить"/>
+        <Button fx:id="addButton" text="Добавить" onAction="#add"/>
     </HBox>
 </VBox>

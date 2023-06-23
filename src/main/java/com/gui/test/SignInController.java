@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -47,6 +48,7 @@ public class SignInController {
 			} catch (IOException | ClassNotFoundException exception) {
 				setErrorMessage(exception.getMessage());
 				System.out.println(exception.getMessage());
+				exception.printStackTrace();
 			}
 		}
 	}

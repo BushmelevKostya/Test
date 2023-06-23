@@ -14,11 +14,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
@@ -54,17 +58,16 @@ public class TableController implements Initializable {
 	@FXML
 	private VBox commands;
 	@FXML
-	private ComboBox<String> comboBox;
+	private VBox formLayout;
 	@FXML
-	private Button addButton;
+	private TextField nameField;
 	@FXML
-	private Button removeButton;
+	private TextField xField;
 	@FXML
-	private Button saveButton;
+	private ComboBox<String> unitComboBox;
 	@FXML
-	private Button closeButton;
-	@FXML
-	private Button updateButton;
+	private Button addButtonForm;
+	
 	
 	@FXML
 	private TableView<Product> tableView;
@@ -72,12 +75,36 @@ public class TableController implements Initializable {
 	public TableController() {
 		executorService = Executors.newSingleThreadExecutor();
 	}
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		buildTable();
 		executorService.submit(this::loadProducts);
+//		comboBox.setOnAction(event -> {
+//			String selectedButton = comboBox.getValue();
+//			if (selectedButton != null && selectedButton.equals("Добавить")) {
+//				addButton.setText("Новый текст");
+//			} else {
+//				setErrorMessage("кнопки не существует");
+//			}
+//		});
+//		addButton.setOnAction(event -> {
+//			try {
+//				Stage formStage = new Stage();
+//				formStage.initOwner(addButton.getScene().getWindow());
+//				formStage.initModality(Modality.APPLICATION_MODAL);
+//
+//				FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view.fxml"));
+//				Scene scene = new Scene(fxmlLoader.load(), 600, 300);
+//				formStage.setTitle("Insert");
+//				formStage.setScene(scene);
+//
+//				formStage.show();
+//			} catch (IOException exception) {
+//				setErrorMessage(exception.getMessage());
+//			}
+//		});
 	}
-	
 	private void loadProducts() {
 		try (DatagramSocket clientSocket = new DatagramSocket()) {
 			InetAddress address = InetAddress.getByName("localhost");
@@ -89,6 +116,7 @@ public class TableController implements Initializable {
 			ObservableList<Product> observableList = getProducts(groupList);
 			tableView.setItems(observableList);
 		} catch (IOException | ClassNotFoundException exception) {
+		setErrorMessage(exception.getMessage());
 		}
 	}
 	
@@ -178,4 +206,10 @@ public class TableController implements Initializable {
 		return FXCollections.observableList(list);
 	}
 	
+	private void setErrorMessage(String message) {
+		infoMessage.setManaged(false);
+		errorMessage.setManaged(true);
+		errorMessage.setVisible(true);
+		errorMessage.setText(message);
+	}
 }
