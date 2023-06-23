@@ -30,6 +30,8 @@ public class CommandsController implements Serializable {
 	@FXML
 	private ComboBox<String> comboBox;
 	@FXML
+	private Button AnimationButton;
+	@FXML
 	private Button insertButton;
 	@FXML
 	private Button clearButton;
@@ -177,5 +179,10 @@ public class CommandsController implements Serializable {
 		} catch (IOException exception) {
 			setErrorMessage(exception.getMessage());
 		}
+	}
+	@FXML
+	public void animation() {
+		Animation animation = new Animation();
+		animation.start(new Stage());
 	}
 }

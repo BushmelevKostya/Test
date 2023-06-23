@@ -36,7 +36,7 @@ public class Animation extends Application {
 	 * @param tlpx  the top left x co-ordinate where the image will be plotted (in canvas co-ordinates).
 	 * @param tlpy  the top left y co-ordinate where the image will be plotted (in canvas co-ordinates).
 	 */
-	private void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
+	public void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
 		gc.save(); // saves the current state on stack, including the current transform
 		rotate(gc, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
 		gc.drawImage(image, tlpx, tlpy);
@@ -73,7 +73,7 @@ public class Animation extends Application {
 		System.out.println(1);
 	}
 	
-	public static void main(String[] args) {
+	public void start() {
 		launch(Animation.class);
 	}
 }

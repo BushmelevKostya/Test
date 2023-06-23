@@ -15,6 +15,7 @@
     <Button fx:id="ReplaceIfGreaterButton" text="ReplaceIfGreater" onAction="#replaceIfGreater"/>
     <Button fx:id="ReplaceIfLowerButton" text="ReplaceIfLower" onAction="#replaceIfLower"/>
     <Button fx:id="UpdateButton" text="Update" onAction="#update"/>
+    <Button fx:id="AnimationButton" text="Animation" onAction="#animation"/>
     <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
     <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
 </VBox>
