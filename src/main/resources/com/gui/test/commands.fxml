@@ -6,6 +6,7 @@
 
 <?import javafx.collections.FXCollections?>
 
+<?import javafx.scene.text.Text?>
 <VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0" fx:controller="com.gui.test.CommandsController">
     <ComboBox fx:id="comboBox" promptText="Выберите действие">
         <items>
@@ -27,4 +28,6 @@
     <Button fx:id="ReplaceIfGreaterButton" text="ReplaceIfGreater" onAction="#replaceIfGreater"/>
     <Button fx:id="ReplaceIfLowerButton" text="ReplaceIfLower" onAction="#replaceIfLower"/>
     <Button fx:id="UpdateButton" text="Update" onAction="#update"/>
+    <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
+    <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
 </VBox>

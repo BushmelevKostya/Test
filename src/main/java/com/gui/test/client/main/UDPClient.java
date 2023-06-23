@@ -4,6 +4,6 @@ import com.gui.test.client.ClientExecutor;
 
 public class UDPClient {
 	public static void main(String[] args) throws Exception {
-		new ClientExecutor().run();
+		ClientExecutor.getClientExecutor().run();
  	}
 }

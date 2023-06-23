@@ -18,11 +18,11 @@ public class ClientExecutor {
 	private static String password;
 	private DatagramSocket clientSocket;
 	private InetAddress address;
-	
+	private static ClientExecutor clientExecutor;
 	protected static String accessToken;
 	protected static String refreshToken;
 	
-	public ClientExecutor() {
+	private ClientExecutor() {
 		try {
 			this.clientSocket = new DatagramSocket();
 			this.address = InetAddress.getByName("localhost");
@@ -181,5 +181,12 @@ public class ClientExecutor {
 	
 	public static void setRefreshToken(String refreshToken) {
 		ClientExecutor.refreshToken = refreshToken;
+	}
+	
+	public static ClientExecutor getClientExecutor() {
+		if (clientExecutor == null) {
+			return new ClientExecutor();
+		}
+		return clientExecutor;
 	}
 }

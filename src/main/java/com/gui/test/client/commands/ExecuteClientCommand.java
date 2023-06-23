@@ -25,7 +25,7 @@ public class ExecuteClientCommand extends ClientCommand {
             throw new ExitException();
         }
         stack.push(value);
-        new ClientExecutor().runScript(value);
+        ClientExecutor.getClientExecutor().runScript(value);
         stack.pop();
     }
 }

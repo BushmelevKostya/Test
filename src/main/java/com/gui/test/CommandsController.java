@@ -1,9 +1,13 @@
 package com.gui.test;
 
+import com.gui.test.client.ClientExecutor;
+import com.gui.test.common.exception.*;
+import com.gui.test.common.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -78,7 +82,20 @@ public class CommandsController implements Serializable {
 	
 	@FXML
 	private void remove() {
-	
+		try {
+			Stage formStage = new Stage();
+			formStage.initOwner(insertButton.getScene().getWindow());
+			formStage.initModality(Modality.APPLICATION_MODAL);
+			
+			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("id-form.fxml"));
+			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
+			formStage.setTitle("Id");
+			formStage.setScene(scene);
+			
+			formStage.show();
+		} catch (IOException exception) {
+			setErrorMessage(exception.getMessage());
+		}
 	}
 	
 	@FXML

@@ -69,7 +69,7 @@ public class FormViewController {
 		
 		String commandName = "insert";
 		String value = null;
-		ClientExecutor clientExecutor = new ClientExecutor();
+		ClientExecutor clientExecutor = ClientExecutor.getClientExecutor();
 		
 		String creationDate = String.valueOf(ZonedDateTime.now());
 		Coordinates coordinates = new Coordinates(x, y);
@@ -78,7 +78,7 @@ public class FormViewController {
 		
 		try{
 			clientExecutor.perform(product, commandName, value);
-		}catch (IOException | UniqueException | NullStringException | FalseTypeException | InfiniteException |
+		} catch (IOException | UniqueException | NullStringException | FalseTypeException | InfiniteException |
 		        ExitException | FalseValuesException | ClassNotFoundException exception) {
 			setErrorMessage(exception.getMessage());
 		}

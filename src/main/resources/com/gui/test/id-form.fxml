@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.text.Text?>
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0" fx:controller="com.gui.test.IdFormController">
+    <TextField fx:id="idField" promptText="Введите Id"/>
+    <Button fx:id="submitButton" text="Ввод" onAction="#submit"/>
+    <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
+    <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
+</VBox>
