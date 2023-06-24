@@ -197,6 +197,6 @@ public class CommandsController implements Serializable {
 			tlpy.add(Math.toIntExact(product.getCoordinates().getY()) * 10);
 		}
 		
-		animation.start(new Stage(), angles, tipz, tlpy);
+		animation.start(new Stage(), angles, tipz, tlpy, products);
 	}
 }
