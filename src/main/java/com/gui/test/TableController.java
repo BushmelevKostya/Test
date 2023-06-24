@@ -217,68 +217,70 @@ public class TableController implements Initializable {
 	}
 	
 	public void buildTable() {
-		TableColumn<Product, String> idColumn = new TableColumn<>("ID");
+		var string = ResourceBundle.getBundle("LabelBundle_" + HelloApplication.locale);
+		TableColumn<Product, String> idColumn = new TableColumn<>(string.getString("table.column.id"));
 		idColumn.setMinWidth(20);
 		idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getId())));
 		
-		TableColumn<Product, String> nameColumn = new TableColumn<>("Name");
+		TableColumn<Product, String> nameColumn = new TableColumn<>(string.getString("table.column.name"));
 		nameColumn.setMinWidth(20);
 		nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getName())));
 		
-		TableColumn<Product, String> coordinatesXColumn = new TableColumn<>("X");
+		TableColumn<Product, String> coordinatesXColumn = new TableColumn<>(string.getString("table.column.x"));
 		coordinatesXColumn.setMinWidth(20);
 		coordinatesXColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCoordinates().getX())));
 		
-		TableColumn<Product, String> coordinatesYColumn = new TableColumn<>("Y");
+		TableColumn<Product, String> coordinatesYColumn = new TableColumn<>(string.getString("table.column.y"));
 		coordinatesYColumn.setMinWidth(20);
 		coordinatesYColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCoordinates().getX())));
 		
-		TableColumn<Product, String> creationDateColumn = new TableColumn<>("Creation Date");
+		TableColumn<Product, String> creationDateColumn = new TableColumn<>(string.getString("table.column.creationDate"));
 		creationDateColumn.setMinWidth(20);
 		creationDateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCreationDate())));
 		
-		TableColumn<Product, String> priceColumn = new TableColumn<>("Price");
+		TableColumn<Product, String> priceColumn = new TableColumn<>(string.getString("table.column.price"));
 		priceColumn.setMinWidth(20);
 		priceColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrice())));
 		
-		TableColumn<Product, String> partNumberColumn = new TableColumn<>("Part Number");
+		TableColumn<Product, String> partNumberColumn = new TableColumn<>(string.getString("table.column.partNumber"));
 		partNumberColumn.setMinWidth(20);
 		partNumberColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPartNumber())));
 		
-		TableColumn<Product, String> manufacturerCostColumn = new TableColumn<>("Manufacturer Cost");
+		TableColumn<Product, String> manufacturerCostColumn = new TableColumn<>(string.getString("table.column.manufacturerCost"));
 		manufacturerCostColumn.setMinWidth(20);
 		manufacturerCostColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getManufactureCost())));
 		
-		TableColumn<Product, String> unitOfMeasureColumn = new TableColumn<>("Unit of Measure");
+		TableColumn<Product, String> unitOfMeasureColumn = new TableColumn<>(string.getString("table.column.unitOfMeasure"));
 		unitOfMeasureColumn.setMinWidth(20);
 		unitOfMeasureColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getUnitOfMeasure())));
 		
-		TableColumn<Product, String> organizationIdColumn = new TableColumn<>("Organization Id");
+		TableColumn<Product, String> organizationIdColumn = new TableColumn<>(string.getString("table.column.organizationId"));
 		organizationIdColumn.setMinWidth(20);
 		organizationIdColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getManufacturer().getId())));
 		
-		TableColumn<Product, String> organizationNameColumn = new TableColumn<>("Organization Name");
+		TableColumn<Product, String> organizationNameColumn = new TableColumn<>(string.getString("table.column.organizationName"));
 		organizationNameColumn.setMinWidth(20);
 		organizationNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getManufacturer().getName()));
 		
-		TableColumn<Product, String> organizationFullNameColumn = new TableColumn<>("Full Name");
+		TableColumn<Product, String> organizationFullNameColumn = new TableColumn<>(string.getString("table.column.organizationFullName"));
 		organizationFullNameColumn.setMinWidth(20);
 		organizationFullNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getManufacturer().getFullName()));
 		
-		TableColumn<Product, String> organizationAnnualTurnoverColumn = new TableColumn<>("Annual Turnover");
+		TableColumn<Product, String> organizationAnnualTurnoverColumn = new TableColumn<>(string.getString("table.column.organizationAnnualTurnover"));
 		organizationAnnualTurnoverColumn.setMinWidth(20);
 		organizationAnnualTurnoverColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getManufacturer().getAnnualTurnover())));
 		
-		TableColumn<Product, String> organizationEmployeesCountColumn = new TableColumn<>("Employees Count");
+		TableColumn<Product, String> organizationEmployeesCountColumn = new TableColumn<>(string.getString("table.column.organizationEmployeesCount"));
 		organizationEmployeesCountColumn.setMinWidth(20);
 		organizationEmployeesCountColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getManufacturer().getEmployeesCount())));
 		
-		TableColumn<Product, String> organizationTypeColumn = new TableColumn<>("Organization Type");
+		TableColumn<Product, String> organizationTypeColumn = new TableColumn<>(string.getString("table.column.organizationType"));
 		organizationTypeColumn.setMinWidth(20);
 		organizationTypeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getManufacturer().getType())));
 		
 		tableView.getColumns().addAll(idColumn, nameColumn, coordinatesXColumn, coordinatesYColumn, creationDateColumn, priceColumn, partNumberColumn, manufacturerCostColumn, unitOfMeasureColumn, organizationIdColumn, organizationNameColumn, organizationFullNameColumn, organizationAnnualTurnoverColumn, organizationEmployeesCountColumn, organizationTypeColumn);
 	}
+	
 	
 	private ObservableList<Product> getProducts(List<Product> list) {
 		return FXCollections.observableList(list);

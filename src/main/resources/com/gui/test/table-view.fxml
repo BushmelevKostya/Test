@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
@@ -17,74 +16,74 @@
                 <VBox spacing="10">
                     <fx:include fx:id="commands" source="commands.fxml"/>
                     <HBox spacing="10">
-                        <Label text="Filter by Id:"/>
+                        <Label text="%filter.label.id"/>
                         <TextField fx:id="idFilterField"/>
-                        <Button text="Filter" onAction="#filterById"/>
+                        <Button text="%filter.button.filter" onAction="#filterById"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by Name:"/>
+                        <Label text="%filter.label.name"/>
                         <TextField fx:id="nameFilterField"/>
-                        <Button text="Filter" onAction="#filterByName"/>
+                        <Button text="%filter.button.filter" onAction="#filterByName"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by X:"/>
+                        <Label text="%filter.label.x"/>
                         <TextField fx:id="xFilterField"/>
-                        <Button text="Filter" onAction="#filterByX"/>
+                        <Button text="%filter.button.filter" onAction="#filterByX"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by Y:"/>
+                        <Label text="%filter.label.y"/>
                         <TextField fx:id="YFilterField"/>
-                        <Button text="Filter" onAction="#filterByY"/>
+                        <Button text="%filter.button.filter" onAction="#filterByY"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by Price:"/>
+                        <Label text="%filter.label.price"/>
                         <TextField fx:id="priceFilterField"/>
-                        <Button text="Filter" onAction="#filterByPrice"/>
+                        <Button text="%filter.button.filter" onAction="#filterByPrice"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by PartNumber:"/>
+                        <Label text="%filter.label.partNumber"/>
                         <TextField fx:id="partNumberFilterField"/>
-                        <Button text="Filter" onAction="#filterByPartNumber"/>
+                        <Button text="%filter.button.filter" onAction="#filterByPartNumber"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by ManufactureCost:"/>
+                        <Label text="%filter.label.manufactureCost"/>
                         <TextField fx:id="manufactureCostFilterField"/>
-                        <Button text="Filter" onAction="#filterByManufactureCost"/>
+                        <Button text="%filter.button.filter" onAction="#filterByManufactureCost"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by UnitOfMeasure:"/>
+                        <Label text="%filter.label.unitOfMeasure"/>
                         <TextField fx:id="unitOfMeasureFilterField"/>
-                        <Button text="Filter" onAction="#filterByUnitOfMeasure"/>
+                        <Button text="%filter.button.filter" onAction="#filterByUnitOfMeasure"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by OrgId:"/>
+                        <Label text="%filter.label.orgId"/>
                         <TextField fx:id="orgIdFilterField"/>
-                        <Button text="Filter" onAction="#filterByOrgId"/>
+                        <Button text="%filter.button.filter" onAction="#filterByOrgId"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by orgName:"/>
+                        <Label text="%filter.label.orgName"/>
                         <TextField fx:id="orgNameFilterField"/>
-                        <Button text="Filter" onAction="#filterByOrgName"/>
+                        <Button text="%filter.button.filter" onAction="#filterByOrgName"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by Fullname:"/>
+                        <Label text="%filter.label.fullname"/>
                         <TextField fx:id="fullnameFilterField"/>
-                        <Button text="Filter" onAction="#filterByFullname"/>
+                        <Button text="%filter.button.filter" onAction="#filterByFullname"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by AnnualTurnover:"/>
+                        <Label text="%filter.label.annualTurnover"/>
                         <TextField fx:id="annualTurnoverFilterField"/>
-                        <Button text="Filter" onAction="#filterByAnnualTurnover"/>
+                        <Button text="%filter.button.filter" onAction="#filterByAnnualTurnover"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by EmployeesCount:"/>
+                        <Label text="%filter.label.employeesCount"/>
                         <TextField fx:id="EmployeesCountFilterField"/>
-                        <Button text="Filter" onAction="#filterByEmployeesCount"/>
+                        <Button text="%filter.button.filter" onAction="#filterByEmployeesCount"/>
                     </HBox>
                     <HBox spacing="10">
-                        <Label text="Filter by OrganizationType:"/>
+                        <Label text="%filter.label.organizationType"/>
                         <TextField fx:id="OrganizationTypeFilterField"/>
-                        <Button text="Filter" onAction="#filterByOrganizationType"/>
+                        <Button text="%filter.button.filter" onAction="#filterByOrganizationType"/>
                     </HBox>
                 </VBox>
             </left>
