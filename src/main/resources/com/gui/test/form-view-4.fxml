@@ -11,29 +11,29 @@
 <?import javafx.scene.text.Text?>
 <VBox fx:id="formLayout" spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gui.test.FormViewController4">
     <children>
-        <Label text="Id запрашиваемого элемента:"/>
+        <Label text="%form.field.id"/>
         <TextField fx:id="idField"/>
 
-        <Label text="Имя:"/>
+        <Label text="%form.field.name"/>
         <TextField fx:id="nameField"/>
 
-        <Label text="X:"/>
+        <Label text="%form.field.x"/>
         <TextField fx:id="xField"/>
 
-        <Label text="Y:"/>
+        <Label text="%form.field.y"/>
         <TextField fx:id="yField"/>
 
-        <Label text="Price:"/>
+        <Label text="%form.field.price"/>
         <TextField fx:id="priceField"/>
 
-        <Label text="Part Number:"/>
+        <Label text="%form.field.partNumber"/>
         <TextField fx:id="partNumberField"/>
 
-        <Label text="Manufacture Cost:"/>
+        <Label text="%form.field.manufactureCost"/>
         <TextField fx:id="manufactureCostField"/>
 
-        <Label text="Unit Of Measure:"/>
-        <ComboBox fx:id="unitComboBox" promptText="Выберите единицу измерения">
+        <Label text="%form.field.unit"/>
+        <ComboBox fx:id="unitComboBox" promptText="Select unit of measure">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="GRAMS"/>
@@ -44,20 +44,20 @@
             </items>
         </ComboBox>
 
-        <Label text="Organization Name:"/>
+        <Label text="%form.field.organizationName"/>
         <TextField fx:id="organizationNameField"/>
 
-        <Label text="Organization Fullname:"/>
+        <Label text="%form.field.organizationFullname"/>
         <TextField fx:id="organizationFullnameField"/>
 
-        <Label text="Annual Turnover:"/>
+        <Label text="%form.field.annualTurnover"/>
         <TextField fx:id="annualTurnoverField"/>
 
-        <Label text="Employees Count:"/>
+        <Label text="%form.field.employeesCount"/>
         <TextField fx:id="employeesCountField"/>
 
-        <Label text="Organization Type:"/>
-        <ComboBox fx:id="organizationTypeComboBox" promptText="Выберите тип организации">
+        <Label text="%form.field.organizationType"/>
+        <ComboBox fx:id="organizationTypeComboBox" promptText="Select organization type">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="COMMERCIAL"/>
@@ -68,7 +68,7 @@
             </items>
         </ComboBox>
 
-        <Button fx:id="addButtonForm" text="Добавить" onAction="#add"/>
+        <Button fx:id="addButtonForm" text="%form.button.add" onAction="#add"/>
     </children>
     <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
     <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>

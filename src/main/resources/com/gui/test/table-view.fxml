@@ -10,8 +10,8 @@
             fx:controller="com.gui.test.TableController">
     <left>
         <VBox spacing="10">
-<!--            <TextField fx:id="filterTextField" promptText="Фильтр по значению"/>-->
-<!--            <ComboBox fx:id="sortComboBox" promptText="Сортировка по колонке"/>-->
+            <!--            <TextField fx:id="filterTextField" promptText="%table.filterPrompt"/>-->
+            <!--            <ComboBox fx:id="sortComboBox" promptText="%table.sortPrompt"/>-->
             <fx:include fx:id="commands" source="commands.fxml"/>
         </VBox>
     </left>
@@ -20,8 +20,8 @@
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
             </padding>
-            <Label fx:id="titleText" text="Продукты"/>
-            <Label fx:id="userField" text="root"/>
+            <Label fx:id="titleText" text="%table.title"/>
+            <Label fx:id="userField" text="%table.user"/>
             <TableView fx:id="tableView"/>
             <Text fx:id="errorMessage" fill="#F00"/>
         </VBox>

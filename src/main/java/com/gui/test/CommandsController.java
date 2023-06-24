@@ -64,6 +64,7 @@ public class CommandsController implements Serializable {
 			formStage.initModality(Modality.APPLICATION_MODAL);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view.fxml"));
+			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
 			formStage.setTitle("Insert");
 			formStage.setScene(scene);
@@ -103,6 +104,7 @@ public class CommandsController implements Serializable {
 			formStage.initModality(Modality.APPLICATION_MODAL);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("id-form.fxml"));
+			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
 			formStage.setTitle("Id");
 			formStage.setScene(scene);
@@ -121,6 +123,7 @@ public class CommandsController implements Serializable {
 			formStage.initModality(Modality.APPLICATION_MODAL);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("id-form-2.fxml"));
+			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
 			formStage.setTitle("Id");
 			formStage.setScene(scene);
@@ -139,6 +142,7 @@ public class CommandsController implements Serializable {
 			formStage.initModality(Modality.APPLICATION_MODAL);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view-2.fxml"));
+			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
 			formStage.setTitle("Id");
 			formStage.setScene(scene);
@@ -157,6 +161,7 @@ public class CommandsController implements Serializable {
 			formStage.initModality(Modality.APPLICATION_MODAL);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view-3.fxml"));
+			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
 			formStage.setTitle("Id");
 			formStage.setScene(scene);
@@ -175,6 +180,7 @@ public class CommandsController implements Serializable {
 			formStage.initModality(Modality.APPLICATION_MODAL);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view-4.fxml"));
+			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
 			formStage.setTitle("Id");
 			formStage.setScene(scene);

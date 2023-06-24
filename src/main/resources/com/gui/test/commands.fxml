@@ -8,14 +8,14 @@
 
 <?import javafx.scene.text.Text?>
 <VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0" fx:controller="com.gui.test.CommandsController">
-    <Button fx:id="insertButton" text="Insert" onAction="#insert"/>
-    <Button fx:id="clearButton" text="Clear" onAction="#clear"/>
-    <Button fx:id="RemoveButton" text="Remove" onAction="#remove"/>
-    <Button fx:id="RemoveLowerKeyButton" text="RemoveLowerKey" onAction="#removeLowerKey"/>
-    <Button fx:id="ReplaceIfGreaterButton" text="ReplaceIfGreater" onAction="#replaceIfGreater"/>
-    <Button fx:id="ReplaceIfLowerButton" text="ReplaceIfLower" onAction="#replaceIfLower"/>
-    <Button fx:id="UpdateButton" text="Update" onAction="#update"/>
-    <Button fx:id="AnimationButton" text="Animation" onAction="#animation"/>
+    <Button fx:id="insertButton" text="%commands.insert" onAction="#insert"/>
+    <Button fx:id="clearButton" text="%commands.clear" onAction="#clear"/>
+    <Button fx:id="RemoveButton" text="%commands.remove" onAction="#remove"/>
+    <Button fx:id="RemoveLowerKeyButton" text="%commands.removeLowerKey" onAction="#removeLowerKey"/>
+    <Button fx:id="ReplaceIfGreaterButton" text="%commands.replaceIfGreater" onAction="#replaceIfGreater"/>
+    <Button fx:id="ReplaceIfLowerButton" text="%commands.replaceIfLower" onAction="#replaceIfLower"/>
+    <Button fx:id="UpdateButton" text="%commands.update" onAction="#update"/>
+    <Button fx:id="AnimationButton" text="%commands.animation" onAction="#animation"/>
     <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
     <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
 </VBox>
