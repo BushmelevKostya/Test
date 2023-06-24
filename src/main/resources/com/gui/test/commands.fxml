@@ -17,6 +17,7 @@
     <Button fx:id="UpdateButton" text="%commands.update" onAction="#update"/>
     <Button fx:id="AnimationButton" text="%commands.animation" onAction="#animation"/>
     <Button fx:id="LocalizationButton" text="%commands.localization" onAction="#localization"/>
+    <Button fx:id="FilterButton" text="%commands.filterButton" onAction="#deleteFilter"/>
     <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
     <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
 </VBox>

@@ -31,6 +31,8 @@ public class CommandsController implements Serializable {
 	@FXML
 	public Text infoMessage;
 	@FXML
+	public Button FilterButton;
+	@FXML
 	public Text errorMessage;
 	@FXML
 	private ComboBox<String> comboBox;
@@ -228,5 +230,10 @@ public class CommandsController implements Serializable {
 		} catch (IOException exception) {
 			setErrorMessage(exception.getMessage());
 		}
+	}
+	
+	@FXML
+	public void deleteFilter() {
+		TableController.updatedFlag = true;
 	}
 }
