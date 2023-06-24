@@ -13,7 +13,7 @@ public class TranslationBundles {
 
     public static void setLanguage(Locale language) {
         currentLanguage = language;
-        currentBundle = ResourceBundle.getBundle("bundels.LabelBundle", currentLanguage);
+        currentBundle = ResourceBundle.getBundle("LabelBundle", currentLanguage);
     }
 
     public static ResourceBundle getBundle() {

@@ -22,7 +22,7 @@
     <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
     <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
     <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signIn"
-            text="Sign In">
+            text="%signIn.signIn">
     </Button>
     <Text fill="#404040" onMouseClicked="#showSignUpStage" strokeType="OUTSIDE"
           strokeWidth="0.0" text="%signIn.doNotHaveAccount">
