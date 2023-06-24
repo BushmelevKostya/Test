@@ -9,67 +9,72 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import javafx.scene.text.Text?>
-<VBox fx:id="formLayout" spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gui.test.FormViewController3">
-    <children>
-        <Label text="%form.field.id"/>
-        <TextField fx:id="idField"/>
+<?import javafx.scene.control.ScrollPane?>
+<ScrollPane xmlns:fx="http://javafx.com/fxml" fx:id="scrollPane" fx:controller="com.gui.test.FormViewController3">
+    <content>
+        <VBox fx:id="formLayout" spacing="10">
+            <children>
+                <Label text="%form.field.id"/>
+                <TextField fx:id="idField"/>
 
-        <Label text="%form.field.name"/>
-        <TextField fx:id="nameField"/>
+                <Label text="%form.field.name"/>
+                <TextField fx:id="nameField"/>
 
-        <Label text="%form.field.x"/>
-        <TextField fx:id="xField"/>
+                <Label text="%form.field.x"/>
+                <TextField fx:id="xField"/>
 
-        <Label text="%form.field.y"/>
-        <TextField fx:id="yField"/>
+                <Label text="%form.field.y"/>
+                <TextField fx:id="yField"/>
 
-        <Label text="%form.field.price"/>
-        <TextField fx:id="priceField"/>
+                <Label text="%form.field.price"/>
+                <TextField fx:id="priceField"/>
 
-        <Label text="%form.field.partNumber"/>
-        <TextField fx:id="partNumberField"/>
+                <Label text="%form.field.partNumber"/>
+                <TextField fx:id="partNumberField"/>
 
-        <Label text="%form.field.manufactureCost"/>
-        <TextField fx:id="manufactureCostField"/>
+                <Label text="%form.field.manufactureCost"/>
+                <TextField fx:id="manufactureCostField"/>
 
-        <Label text="%form.field.unit"/>
-        <ComboBox fx:id="unitComboBox" promptText="Select unit of measure">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="GRAMS"/>
-                    <String fx:value="CENTIMETERS"/>
-                    <String fx:value="LITERS"/>
-                    <String fx:value="MILLILITERS"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
+                <Label text="%form.field.unit"/>
+                <ComboBox fx:id="unitComboBox" promptText="Select unit of measure">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="GRAMS"/>
+                            <String fx:value="CENTIMETERS"/>
+                            <String fx:value="LITERS"/>
+                            <String fx:value="MILLILITERS"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
-        <Label text="%form.field.organizationName"/>
-        <TextField fx:id="organizationNameField"/>
+                <Label text="%form.field.organizationName"/>
+                <TextField fx:id="organizationNameField"/>
 
-        <Label text="%form.field.organizationFullname"/>
-        <TextField fx:id="organizationFullnameField"/>
+                <Label text="%form.field.organizationFullname"/>
+                <TextField fx:id="organizationFullnameField"/>
 
-        <Label text="%form.field.annualTurnover"/>
-        <TextField fx:id="annualTurnoverField"/>
+                <Label text="%form.field.annualTurnover"/>
+                <TextField fx:id="annualTurnoverField"/>
 
-        <Label text="%form.field.employeesCount"/>
-        <TextField fx:id="employeesCountField"/>
+                <Label text="%form.field.employeesCount"/>
+                <TextField fx:id="employeesCountField"/>
 
-        <Label text="%form.field.organizationType"/>
-        <ComboBox fx:id="organizationTypeComboBox" promptText="Select organization type">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="COMMERCIAL"/>
-                    <String fx:value="GOVERNMENT"/>
-                    <String fx:value="LITERS"/>
-                    <String fx:value="PRIVATE_LIMITED_COMPANY"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
+                <Label text="%form.field.organizationType"/>
+                <ComboBox fx:id="organizationTypeComboBox" promptText="Select organization type">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="COMMERCIAL"/>
+                            <String fx:value="GOVERNMENT"/>
+                            <String fx:value="LITERS"/>
+                            <String fx:value="PRIVATE_LIMITED_COMPANY"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
-        <Button fx:id="addButtonForm" text="%form.button.add" onAction="#add"/>
-    </children>
-    <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
-    <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
-</VBox>
+                <Button fx:id="addButtonForm" text="%form.button.add" onAction="#add"/>
+            </children>
+            <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
+            <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>
+        </VBox>
+    </content>
+</ScrollPane>
