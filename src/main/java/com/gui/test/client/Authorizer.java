@@ -189,4 +189,17 @@ public class Authorizer {
 		return name;
 	}
 	
+	public void sendRegisterRequest(String password, String name, String login) throws ClassNotFoundException, IOException {
+		String hash = getPasswordHash(password);
+		try (DatagramSocket clientSocket = new DatagramSocket()) {
+			InetAddress address = InetAddress.getByName("localhost");
+			SenderChunk.sendRegisterRequest(clientSocket, address, login, name, hash);
+			Response response = RecipientChunk.getResponse(clientSocket);
+			System.out.println(response.getAnswer());
+			if (response.isStatus()) {
+				ClientExecutor.accessToken = response.getAccessToken();
+				ClientExecutor.refreshToken = response.getRefreshToken();
+			}
+		}
+	}
 }
