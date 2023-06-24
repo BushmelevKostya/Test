@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CommandsController implements Serializable {
@@ -50,6 +51,8 @@ public class CommandsController implements Serializable {
 	@FXML
 	private Button UpdateButton;
 	@FXML
+	private Button LocalizationButton;
+	@FXML
 	private TextField usernameField;
 	@FXML
 	private TextField passwordField;
@@ -62,7 +65,7 @@ public class CommandsController implements Serializable {
 			Stage formStage = new Stage();
 			formStage.initOwner(insertButton.getScene().getWindow());
 			formStage.initModality(Modality.APPLICATION_MODAL);
-			
+			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view.fxml"));
 			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
@@ -102,7 +105,7 @@ public class CommandsController implements Serializable {
 			Stage formStage = new Stage();
 			formStage.initOwner(insertButton.getScene().getWindow());
 			formStage.initModality(Modality.APPLICATION_MODAL);
-			
+			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("id-form.fxml"));
 			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
@@ -121,7 +124,7 @@ public class CommandsController implements Serializable {
 			Stage formStage = new Stage();
 			formStage.initOwner(insertButton.getScene().getWindow());
 			formStage.initModality(Modality.APPLICATION_MODAL);
-			
+			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("id-form-2.fxml"));
 			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
@@ -140,7 +143,7 @@ public class CommandsController implements Serializable {
 			Stage formStage = new Stage();
 			formStage.initOwner(insertButton.getScene().getWindow());
 			formStage.initModality(Modality.APPLICATION_MODAL);
-			
+			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view-2.fxml"));
 			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
@@ -159,7 +162,7 @@ public class CommandsController implements Serializable {
 			Stage formStage = new Stage();
 			formStage.initOwner(insertButton.getScene().getWindow());
 			formStage.initModality(Modality.APPLICATION_MODAL);
-			
+			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view-3.fxml"));
 			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
@@ -178,7 +181,7 @@ public class CommandsController implements Serializable {
 			Stage formStage = new Stage();
 			formStage.initOwner(insertButton.getScene().getWindow());
 			formStage.initModality(Modality.APPLICATION_MODAL);
-			
+			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("form-view-4.fxml"));
 			fxmlLoader.setResources(TranslationBundles.getBundle());
 			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
@@ -204,5 +207,26 @@ public class CommandsController implements Serializable {
 		}
 		
 		animation.start(new Stage(), angles, tipz, tlpy, products);
+	}
+	
+	@FXML
+	public void localization() {
+		try {
+			if (HelloApplication.locale.equals("en")) HelloApplication.locale = "ru";
+			else if (HelloApplication.locale.equals("ru")) HelloApplication.locale = "sk";
+			else if (HelloApplication.locale.equals("sk")) HelloApplication.locale = "gr";
+			else if (HelloApplication.locale.equals("gr")) HelloApplication.locale = "es";
+			else if (HelloApplication.locale.equals("es")) HelloApplication.locale = "en";
+			var window = LocalizationButton.getScene().getWindow();
+			Stage stage = WindowController.getStageFromWindow(window);
+			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
+			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("table-view.fxml"));
+			fxmlLoader.setResources(TranslationBundles.getBundle());
+			Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
+			stage.setTitle("Products");
+			stage.setScene(scene);
+		} catch (IOException exception) {
+			setErrorMessage(exception.getMessage());
+		}
 	}
 }

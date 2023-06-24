@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 import java.security.spec.ECField;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 
 public class SignInController {
@@ -93,6 +94,7 @@ public class SignInController {
 	public void changeScene() throws IOException {
 		var window = signInButton.getScene().getWindow();
 		Stage stage = WindowController.getStageFromWindow(window);
+		TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 		FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("table-view.fxml"));
 		fxmlLoader.setResources(TranslationBundles.getBundle());
 		Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
