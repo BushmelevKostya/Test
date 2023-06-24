@@ -42,6 +42,7 @@ public class Animation {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		for (int i = 0; i < angle.size(); i++) {
 			drawRotatedImage(gc, image, angle.get(i), tipx.get(i), tlpy.get(i));
+			System.out.println(i);
 		}
 		
 		canvas.setOnMouseClicked(event -> {
