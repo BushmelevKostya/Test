@@ -26,17 +26,27 @@ public class Animation {
 	Image image;
 	GraphicsContext gc;
 	ArrayList<Product> products;
-	
+	int CENTERX;
+	int CENTERY;
 	Canvas canvas;
 	public void drawRotatedImage(double tlpx, double tlpy, int angle) {
 		gc.save();
-		rotate(gc, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
+		rotate(angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
 		gc.drawImage(image, tlpx, tlpy);
 		gc.restore();
 	}
 	
 	public void start(Stage stage, ArrayList<Integer> angle, ArrayList<Integer> tipx, ArrayList<Integer> tlpy, ArrayList<Product> products) {
 		canvas = new Canvas(1200, 600);
+		
+		CENTERX = (int) canvas.getWidth()/2;
+		CENTERY = (int) canvas.getHeight()/2;
+		
+		for (int i = 0; i < tipx.size(); i++) {
+			tipx.set(i, tipx.get(i) + CENTERX);
+			tlpy.set(i, tlpy.get(i) + CENTERY);
+		}
+		
 		this.products = products;
 		image = new Image("https://image.pngaaa.com/505/2459505-middle.png", 100, 60, true, true);
 		gc = canvas.getGraphicsContext2D();
@@ -56,8 +66,6 @@ public class Animation {
 		drawScene(tipx, tlpy, 0, 0);
 		
 		canvas.setOnMouseClicked(event -> {
-		
-//			animation(gc, canvas, image, tipx.get(i), tlpy.get(i));
 			
 			double mouseX = event.getX();
 			double mouseY = event.getY();
@@ -93,7 +101,6 @@ public class Animation {
 	public void animation(ArrayList<Integer> x, ArrayList<Integer> y, int index) {
 		long startNanoTime = System.nanoTime();
 		final int[] angle = {0};
-		int durationSeconds = 4;
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
 				
@@ -108,7 +115,6 @@ public class Animation {
 				}
 			}
 		}.start();
-
 	}
 	
 	private void changeScene(ArrayList<Integer> x, ArrayList<Integer> y, int index, int angle) {
@@ -117,25 +123,18 @@ public class Animation {
 		drawScene(x, y, index, angle);
 		gc.restore();
 	}
-	private void rotate(GraphicsContext gc, double angle, double px, double py) {
+	private void rotate(double angle, double px, double py) {
 		gc.translate(px, py);
 		gc.rotate(angle);
 		gc.translate(-px, -py);
 	}
 	
 	public void drawScene(ArrayList<Integer> tipx, ArrayList<Integer> tlpy, int index, int angle) {
-		gc.setStroke(Color.LIGHTGRAY);
-		gc.setLineWidth(1.0);
+		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(4.0);
 		
-		var gridSize = 50;
-		
-		for (double x = 0; x <= canvas.getWidth(); x += gridSize) {
-			gc.strokeLine(x, 0, x, canvas.getHeight());
-		}
-		
-		for (double y = 0; y <= canvas.getHeight(); y += gridSize) {
-			gc.strokeLine(0, y, canvas.getWidth(), y);
-		}
+		gc.strokeLine(CENTERX, 0, CENTERX, canvas.getHeight());
+		gc.strokeLine(0, CENTERY, canvas.getWidth(), CENTERY);
 		
 		for (int i = 0; i < tipx.size(); i++) {
 			if (i == index) drawRotatedImage(tipx.get(i), tlpy.get(i), angle);
