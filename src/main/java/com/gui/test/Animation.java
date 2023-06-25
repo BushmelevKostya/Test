@@ -25,6 +25,7 @@ import static java.lang.Thread.sleep;
 public class Animation {
 	Image image;
 	GraphicsContext gc;
+	ArrayList<Product> products;
 	
 	Canvas canvas;
 	public void drawRotatedImage(double tlpx, double tlpy, int angle) {
@@ -36,6 +37,7 @@ public class Animation {
 	
 	public void start(Stage stage, ArrayList<Integer> angle, ArrayList<Integer> tipx, ArrayList<Integer> tlpy, ArrayList<Product> products) {
 		canvas = new Canvas(1200, 600);
+		this.products = products;
 		image = new Image("https://image.pngaaa.com/505/2459505-middle.png", 100, 60, true, true);
 		gc = canvas.getGraphicsContext2D();
 		StackPane stack = new StackPane();
@@ -69,15 +71,6 @@ public class Animation {
 				if (mouseX >= newTlpx && mouseX <= newTlpx + width && mouseY >= newTlpy && mouseY <= newTlpy + height) {
 					animation(tipx, tlpy, i);
 					
-					Alert alert = new Alert(Alert.AlertType.INFORMATION);
-					alert.setTitle("Объект " + (i + 1));
-					alert.setHeaderText("Информация об объекте");
-					var message = products.get(i).toString();
-					
-					alert.setContentText(message);
-					
-					alert.showAndWait();
-					
 					break;
 				}
 			}
@@ -86,33 +79,43 @@ public class Animation {
 		stage.show();
 	}
 	
+	
+	private void showInfo(int i) {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Объект " + (i + 1));
+		alert.setHeaderText("Информация об объекте");
+		var message = products.get(i).toString();
+		
+		alert.setContentText(message);
+		
+		alert.show();
+	}
 	public void animation(ArrayList<Integer> x, ArrayList<Integer> y, int index) {
 		long startNanoTime = System.nanoTime();
 		final int[] angle = {0};
 		int durationSeconds = 4;
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
-				// Вычисляем время, прошедшее с начала анимации
-				double elapsedTime = (currentNanoTime - startNanoTime) / 1_000_000_000.0;
+				
+				changeScene(x, y, index, angle[0]);
+				
+				angle[0] += 8;
 
-				// Очищаем холст
-				gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
-				// Рисуем изображение с учетом анимации
-				gc.save();
-				drawScene(x, y, index, angle[0]);
-				gc.restore();
-
-				// Обновляем значения позиции и угла
-				angle[0] += 1; // изменение угла
-
-				// Проверяем, достигнут ли конечный размер и длительность анимации
-				if (elapsedTime >= durationSeconds) {
-					stop(); // останавливаем анимацию
+				if (angle[0] >= 360) {
+					stop();
+					changeScene(x, y, index, 0);
+					showInfo(index);
 				}
 			}
 		}.start();
 
+	}
+	
+	private void changeScene(ArrayList<Integer> x, ArrayList<Integer> y, int index, int angle) {
+		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+		gc.save();
+		drawScene(x, y, index, angle);
+		gc.restore();
 	}
 	private void rotate(GraphicsContext gc, double angle, double px, double py) {
 		gc.translate(px, py);
