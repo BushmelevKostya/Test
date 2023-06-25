@@ -37,9 +37,8 @@ public class Animation {
 	}
 	
 	public void start(Stage stage, ArrayList<Integer> angle, ArrayList<Integer> tipx, ArrayList<Integer> tlpy, ArrayList<Product> products) {
-		Image image = new Image("https://image.pngaaa.com/505/2459505-middle.png");
-		double durationSeconds = 4.0;
-		Canvas canvas = new Canvas(200, 120);
+		Image image = new Image("https://image.pngaaa.com/505/2459505-middle.png", 200, 100, true, true);
+		Canvas canvas = new Canvas(1200, 600);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		
 		for (int i = 0; i < angle.size(); i++) {

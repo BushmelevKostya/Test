@@ -240,5 +240,21 @@ public class CommandsController implements Serializable {
 	}
 	@FXML
 	public void executeScript() {
+		try {
+			Stage formStage = new Stage();
+			formStage.initOwner(ExecuteScriptButton.getScene().getWindow());
+			formStage.initModality(Modality.APPLICATION_MODAL);
+			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
+			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("id-form-3.fxml"));
+			fxmlLoader.setResources(TranslationBundles.getBundle());
+			Scene scene = new Scene(fxmlLoader.load(), 600, 300);
+			var string = ResourceBundle.getBundle("LabelBundle_" + HelloApplication.locale);
+			formStage.setTitle(string.getString("commands.execute"));
+			formStage.setScene(scene);
+			
+			formStage.show();
+		} catch (IOException exception) {
+			setErrorMessage(exception.getMessage());
+		}
 	}
 }
