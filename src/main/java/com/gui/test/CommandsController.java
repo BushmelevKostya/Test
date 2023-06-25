@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class CommandsController implements Serializable {
+public class CommandsController implements Initializable {
 	@FXML
 	public Text infoMessage;
 	@FXML
@@ -36,6 +36,8 @@ public class CommandsController implements Serializable {
 	public Text errorMessage;
 	@FXML
 	public Button ExecuteScriptButton;
+	@FXML
+	public ComboBox LocaleComboBox;
 	@FXML
 	private ComboBox<String> comboBox;
 	@FXML
@@ -216,12 +218,13 @@ public class CommandsController implements Serializable {
 	@FXML
 	public void localization() {
 		try {
-			if (HelloApplication.locale.equals("en")) HelloApplication.locale = "ru";
-			else if (HelloApplication.locale.equals("ru")) HelloApplication.locale = "sk";
-			else if (HelloApplication.locale.equals("sk")) HelloApplication.locale = "gr";
-			else if (HelloApplication.locale.equals("gr")) HelloApplication.locale = "es";
-			else if (HelloApplication.locale.equals("es")) HelloApplication.locale = "en";
-			var window = LocalizationButton.getScene().getWindow();
+			String locale = String.valueOf(LocaleComboBox.getValue());
+			if (locale.equals("ENG")) HelloApplication.locale = "en";
+			else if (locale.equals("RUS")) HelloApplication.locale = "ru";
+			else if (locale.equals("SVK")) HelloApplication.locale = "sk";
+			else if (locale.equals("GRC")) HelloApplication.locale = "gr";
+			else if (locale.equals("ESP")) HelloApplication.locale = "es";
+			var window = LocaleComboBox.getScene().getWindow();
 			Stage stage = WindowController.getStageFromWindow(window);
 			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("table-view.fxml"));
@@ -256,5 +259,12 @@ public class CommandsController implements Serializable {
 		} catch (IOException exception) {
 			setErrorMessage(exception.getMessage());
 		}
+	}
+	
+	@Override
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		LocaleComboBox.setOnAction(event -> {
+			localization();
+		});
 	}
 }

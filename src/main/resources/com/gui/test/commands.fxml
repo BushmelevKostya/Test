@@ -7,6 +7,8 @@
 <?import javafx.collections.FXCollections?>
 
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import java.lang.String?>
 <VBox xmlns:fx="http://javafx.com/fxml" spacing="10.0" fx:controller="com.gui.test.CommandsController">
     <Button fx:id="insertButton" text="%commands.insert" onAction="#insert"/>
     <Button fx:id="clearButton" text="%commands.clear" onAction="#clear"/>
@@ -17,7 +19,18 @@
     <Button fx:id="UpdateButton" text="%commands.update" onAction="#update"/>
     <Button fx:id="ExecuteScriptButton" text="%commands.execute" onAction="#executeScript"/>
     <Button fx:id="AnimationButton" text="%commands.animation" onAction="#animation"/>
-    <Button fx:id="LocalizationButton" text="%commands.localization" onAction="#localization"/>
+<!--    <Button fx:id="LocalizationButton" text="%commands.localization" onAction="#localization"/>-->
+    <ComboBox fx:id="LocaleComboBox" promptText="%commands.localization">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="RUS"/>
+                <String fx:value="GRC"/>
+                <String fx:value="ESP"/>
+                <String fx:value="SVK"/>
+                <String fx:value="ENG"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
     <Button fx:id="FilterButton" text="%commands.filterButton" onAction="#deleteFilter"/>
     <Text fx:id="errorMessage" fill="#F00" wrappingWidth="260" textAlignment="CENTER"/>
     <Text fx:id="infoMessage" wrappingWidth="260" textAlignment="CENTER"/>

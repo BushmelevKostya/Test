@@ -1,10 +1,7 @@
 package com.gui.test;
 
 import com.gui.test.common.product.Product;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.ScaleTransition;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -22,14 +19,15 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 /** Rotates images round pivot points and places them in a canvas */
 public class Animation {
+	Image image;
+	GraphicsContext gc;
 	
-	private void rotate(GraphicsContext gc, double angle, double px, double py) {
-		Rotate r = new Rotate(angle, px, py);
-		gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
-	}
-	public void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
+	Canvas canvas;
+	public void drawRotatedImage(double tlpx, double tlpy, int angle) {
 		gc.save();
 		rotate(gc, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
 		gc.drawImage(image, tlpx, tlpy);
@@ -37,15 +35,28 @@ public class Animation {
 	}
 	
 	public void start(Stage stage, ArrayList<Integer> angle, ArrayList<Integer> tipx, ArrayList<Integer> tlpy, ArrayList<Product> products) {
-		Image image = new Image("https://image.pngaaa.com/505/2459505-middle.png", 200, 100, true, true);
-		Canvas canvas = new Canvas(1200, 600);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
+		canvas = new Canvas(1200, 600);
+		image = new Image("https://image.pngaaa.com/505/2459505-middle.png", 100, 60, true, true);
+		gc = canvas.getGraphicsContext2D();
+		StackPane stack = new StackPane();
+		stack.setMaxSize(canvas.getWidth(), canvas.getHeight());
+		stack.setStyle("-fx-background-image: url('https://se.ifmo.ru/o/helios-theme/images/ducks-1.jpeg');");
+		stack.getChildren().add(
+				canvas
+		);
 		
-		for (int i = 0; i < angle.size(); i++) {
-			drawRotatedImage(gc, image, angle.get(i), tipx.get(i), tlpy.get(i));
-		}
+		StackPane frame = new StackPane();
+		frame.setPadding(new Insets(20));
+		frame.getChildren().add(stack);
+		
+		stage.setScene(new Scene(frame, Color.BURLYWOOD));
+		
+		drawScene(tipx, tlpy, 0, 0);
 		
 		canvas.setOnMouseClicked(event -> {
+		
+//			animation(gc, canvas, image, tipx.get(i), tlpy.get(i));
+			
 			double mouseX = event.getX();
 			double mouseY = event.getY();
 			
@@ -56,6 +67,8 @@ public class Animation {
 				double height = image.getHeight();
 				
 				if (mouseX >= newTlpx && mouseX <= newTlpx + width && mouseY >= newTlpy && mouseY <= newTlpy + height) {
+					animation(tipx, tlpy, i);
+					
 					Alert alert = new Alert(Alert.AlertType.INFORMATION);
 					alert.setTitle("Объект " + (i + 1));
 					alert.setHeaderText("Информация об объекте");
@@ -70,21 +83,60 @@ public class Animation {
 			}
 		});
 		
-		
-		
-		StackPane stack = new StackPane();
-		stack.setMaxSize(canvas.getWidth(), canvas.getHeight());
-		stack.setStyle("-fx-background-image: url('https://se.ifmo.ru/o/helios-theme/images/ducks-1.jpeg');");
-		stack.getChildren().add(
-				canvas
-		);
-		
-		// places a resizable padded frame around the canvas.
-		StackPane frame = new StackPane();
-		frame.setPadding(new Insets(20));
-		frame.getChildren().add(stack);
-		
-		stage.setScene(new Scene(frame, Color.BURLYWOOD));
 		stage.show();
+	}
+	
+	public void animation(ArrayList<Integer> x, ArrayList<Integer> y, int index) {
+		long startNanoTime = System.nanoTime();
+		final int[] angle = {0};
+		int durationSeconds = 4;
+		new AnimationTimer() {
+			public void handle(long currentNanoTime) {
+				// Вычисляем время, прошедшее с начала анимации
+				double elapsedTime = (currentNanoTime - startNanoTime) / 1_000_000_000.0;
+
+				// Очищаем холст
+				gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+				// Рисуем изображение с учетом анимации
+				gc.save();
+				drawScene(x, y, index, angle[0]);
+				gc.restore();
+
+				// Обновляем значения позиции и угла
+				angle[0] += 1; // изменение угла
+
+				// Проверяем, достигнут ли конечный размер и длительность анимации
+				if (elapsedTime >= durationSeconds) {
+					stop(); // останавливаем анимацию
+				}
+			}
+		}.start();
+
+	}
+	private void rotate(GraphicsContext gc, double angle, double px, double py) {
+		gc.translate(px, py);
+		gc.rotate(angle);
+		gc.translate(-px, -py);
+	}
+	
+	public void drawScene(ArrayList<Integer> tipx, ArrayList<Integer> tlpy, int index, int angle) {
+		gc.setStroke(Color.LIGHTGRAY);
+		gc.setLineWidth(1.0);
+		
+		var gridSize = 50;
+		
+		for (double x = 0; x <= canvas.getWidth(); x += gridSize) {
+			gc.strokeLine(x, 0, x, canvas.getHeight());
+		}
+		
+		for (double y = 0; y <= canvas.getHeight(); y += gridSize) {
+			gc.strokeLine(0, y, canvas.getWidth(), y);
+		}
+		
+		for (int i = 0; i < tipx.size(); i++) {
+			if (i == index) drawRotatedImage(tipx.get(i), tlpy.get(i), angle);
+			else drawRotatedImage(tipx.get(i), tlpy.get(i), 0);
+		}
 	}
 }
