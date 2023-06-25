@@ -15,6 +15,7 @@
     <Button fx:id="ReplaceIfGreaterButton" text="%commands.replaceIfGreater" onAction="#replaceIfGreater"/>
     <Button fx:id="ReplaceIfLowerButton" text="%commands.replaceIfLower" onAction="#replaceIfLower"/>
     <Button fx:id="UpdateButton" text="%commands.update" onAction="#update"/>
+    <Button fx:id="ExecuteScriptButton" text="%commands.execute" onAction="#executeScript"/>
     <Button fx:id="AnimationButton" text="%commands.animation" onAction="#animation"/>
     <Button fx:id="LocalizationButton" text="%commands.localization" onAction="#localization"/>
     <Button fx:id="FilterButton" text="%commands.filterButton" onAction="#deleteFilter"/>

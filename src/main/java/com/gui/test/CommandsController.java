@@ -35,6 +35,8 @@ public class CommandsController implements Serializable {
 	@FXML
 	public Text errorMessage;
 	@FXML
+	public Button ExecuteScriptButton;
+	@FXML
 	private ComboBox<String> comboBox;
 	@FXML
 	private Button AnimationButton;
@@ -235,5 +237,8 @@ public class CommandsController implements Serializable {
 	@FXML
 	public void deleteFilter() {
 		TableController.updatedFlag = true;
+	}
+	@FXML
+	public void executeScript() {
 	}
 }
