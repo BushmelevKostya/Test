@@ -90,13 +90,18 @@ public class RegisterController {
 	}
 	
 	public void changeScene() throws IOException {
+		showProduct(registerButton);
+	}
+	
+	public static void showProduct(Button registerButton) throws IOException{
 		var window = registerButton.getScene().getWindow();
 		Stage stage = WindowController.getStageFromWindow(window);
 		TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 		FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("table-view.fxml"));
 		fxmlLoader.setResources(TranslationBundles.getBundle());
-		Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
+		Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 		stage.setTitle("Products");
 		stage.setScene(scene);
+		stage.setMaximized(true);
 	}
 }

@@ -16,6 +16,7 @@ public class HelloApplication extends Application {
 		FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("sign-in-view.fxml"));
 		fxmlLoader.setResources(TranslationBundles.getBundle());
 		Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+		stage.setResizable(false);
 		stage.setTitle("Hello!");
 		stage.setScene(scene);
 		stage.show();

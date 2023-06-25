@@ -2,6 +2,7 @@ package com.gui.test;
 
 import com.gui.test.client.Authorizer;
 import com.gui.test.client.ClientExecutor;
+import com.gui.test.client.Reader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,8 +64,9 @@ public class SignInController {
 			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
 			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("register-view.fxml"));
 			fxmlLoader.setResources(TranslationBundles.getBundle());
-			Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
-			stage.setTitle("Products");
+			Scene scene = new Scene(fxmlLoader.load(), 400, 320);
+			stage.setResizable(false);
+			stage.setTitle("Register");
 			stage.setScene(scene);
 		} catch (IOException exception) {
 			setErrorMessage(exception.getMessage());
@@ -98,13 +100,6 @@ public class SignInController {
 	}
 	
 	public void changeScene() throws IOException {
-		var window = signInButton.getScene().getWindow();
-		Stage stage = WindowController.getStageFromWindow(window);
-		TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
-		FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("table-view.fxml"));
-		fxmlLoader.setResources(TranslationBundles.getBundle());
-		Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
-		stage.setTitle("Products");
-		stage.setScene(scene);
+		RegisterController.showProduct(signInButton);
 	}
 }

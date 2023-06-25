@@ -44,7 +44,7 @@ public class Animation {
 		
 		for (int i = 0; i < tipx.size(); i++) {
 			tipx.set(i, tipx.get(i) + CENTERX);
-			tlpy.set(i, tlpy.get(i) + CENTERY);
+			tlpy.set(i, CENTERY - tlpy.get(i));
 		}
 		
 		this.products = products;
