@@ -26,6 +26,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Filter;
 
 public class CommandsController implements Initializable {
 	@FXML
@@ -219,19 +220,15 @@ public class CommandsController implements Initializable {
 	public void localization() {
 		try {
 			String locale = String.valueOf(LocaleComboBox.getValue());
-			if (locale.equals("ENG")) HelloApplication.locale = "en";
-			else if (locale.equals("RUS")) HelloApplication.locale = "ru";
-			else if (locale.equals("SVK")) HelloApplication.locale = "sk";
-			else if (locale.equals("GRC")) HelloApplication.locale = "gr";
-			else if (locale.equals("ESP")) HelloApplication.locale = "es";
-			var window = LocaleComboBox.getScene().getWindow();
-			Stage stage = WindowController.getStageFromWindow(window);
-			TranslationBundles.setLanguage(new Locale(HelloApplication.locale));
-			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("table-view.fxml"));
-			fxmlLoader.setResources(TranslationBundles.getBundle());
-			Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
-			stage.setTitle("Products");
-			stage.setScene(scene);
+			switch (locale) {
+				case "ENG" -> HelloApplication.locale = "en";
+				case "RUS" -> HelloApplication.locale = "ru";
+				case "SVK" -> HelloApplication.locale = "sk";
+				case "GRC" -> HelloApplication.locale = "gr";
+				case "ESP" -> HelloApplication.locale = "es";
+			}
+			
+			RegisterController.showProduct(ExecuteScriptButton);
 		} catch (IOException exception) {
 			setErrorMessage(exception.getMessage());
 		}

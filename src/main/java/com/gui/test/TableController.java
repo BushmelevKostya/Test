@@ -9,36 +9,24 @@ import com.gui.test.common.RecipientChunk;
 import com.gui.test.common.Response;
 import com.gui.test.common.SenderChunk;
 import com.gui.test.common.product.Product;
-import com.gui.test.common.product.UnitOfMeasure;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.URL;
-import java.security.Timestamp;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static java.lang.Thread.sleep;
 
@@ -150,72 +138,6 @@ public class TableController implements Initializable {
 		}
 	}
 	
-	private void applyFilter(String filterValue) {
-		Predicate<Product> filterPredicate = createFilterPredicate(filterValue);
-		List<Product> filteredList = allProducts.stream()
-				.filter(filterPredicate)
-				.collect(Collectors.toList());
-		tableView.setItems(FXCollections.observableArrayList(filteredList));
-	}
-	
-	private Predicate<Product> createFilterPredicate(String filterValue) {
-		return product -> {
-			if (filterValue == null || filterValue.isEmpty()) {
-				return true; // No filter, return all
-			}
-			
-			String lowerCaseFilterValue = filterValue.toLowerCase();
-			
-			return product.getName().toLowerCase().contains(lowerCaseFilterValue)
-					|| product.getManufacturer().getName().toLowerCase().contains(lowerCaseFilterValue)
-					|| product.getManufacturer().getFullName().toLowerCase().contains(lowerCaseFilterValue);
-		};
-	}
-	
-	private void applySort(String columnName) {
-		if (columnName == null || columnName.isEmpty()) {
-			return; // No column selected, do nothing
-		}
-		
-		Comparator<Product> comparator;
-		switch (columnName) {
-			case "ID":
-				comparator = Comparator.comparing(Product::getId);
-				break;
-			case "Name":
-				comparator = Comparator.comparing(Product::getName);
-				break;
-			case "Price":
-				comparator = Comparator.comparing(Product::getPrice);
-				break;
-			default:
-				return; // Invalid column selected, do nothing
-		}
-		
-		List<Product> sortedList = allProducts.stream()
-				.sorted(comparator)
-				.collect(Collectors.toList());
-		tableView.setItems(FXCollections.observableArrayList(sortedList));
-	}
-	
-	private void showInfoMessage(String message) {
-		infoMessage.setVisible(true);
-		infoMessage.setText(message);
-	}
-	
-	private void hideInfoMessage() {
-		infoMessage.setVisible(false);
-	}
-	
-	private void showErrorMessage(String message) {
-		errorMessage.setVisible(true);
-		errorMessage.setText(message);
-	}
-	
-	private void hideErrorMessage() {
-		errorMessage.setVisible(false);
-	}
-	
 	public void buildTable() {
 		var string = ResourceBundle.getBundle("LabelBundle_" + HelloApplication.locale);
 		TableColumn<Product, String> idColumn = new TableColumn<>(string.getString("table.column.id"));
@@ -232,7 +154,7 @@ public class TableController implements Initializable {
 		
 		TableColumn<Product, String> coordinatesYColumn = new TableColumn<>(string.getString("table.column.y"));
 		coordinatesYColumn.setMinWidth(20);
-		coordinatesYColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCoordinates().getX())));
+		coordinatesYColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCoordinates().getY())));
 		
 		TableColumn<Product, String> creationDateColumn = new TableColumn<>(string.getString("table.column.creationDate"));
 		creationDateColumn.setMinWidth(20);
