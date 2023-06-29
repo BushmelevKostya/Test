@@ -3,13 +3,17 @@ package com.gui.test;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.robot.Robot;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Locale;
 
+import static java.lang.Thread.sleep;
+
 public class HelloApplication extends Application {
 	public static String locale = "en";
+	
 	@Override
 	public void start(Stage stage) throws IOException {
 		TranslationBundles.setLanguage(new Locale(HelloApplication.locale));

@@ -4,11 +4,11 @@
     <file url="file://$PROJECT_DIR$/pom.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/Script.txt" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/Script1.txt" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/Script2.txt" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/Script3.txt" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/ScriptInsert.txt" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/ScriptInsert2.txt" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/Script.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/Script1.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/Script2.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/Script3.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/ScriptInsert.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/scripts/ScriptInsert2.txt" charset="UTF-8" />
   </component>
 </project>
