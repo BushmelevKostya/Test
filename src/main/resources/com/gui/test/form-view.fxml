@@ -14,7 +14,8 @@
     <content>
         <VBox fx:id="formLayout" spacing="10">
             <children>
-                <Button onAction="#startRobot"/>
+                <Button text="Test" onAction="#startRobot1"/>
+<!--                <Button text="Test2" onAction="#startRobot2"/>-->
                 <Label text="%form.field.name"/>
                 <TextField fx:id="nameField"/>
 

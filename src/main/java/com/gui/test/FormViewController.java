@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
@@ -33,6 +34,8 @@ public class FormViewController {
 	public Text errorMessage;
 	@FXML
 	public TextField nameField;
+	@FXML
+	public ScrollPane scrollPane;
 	@FXML
 	private VBox formLayout;
 	@FXML
@@ -289,8 +292,8 @@ public class FormViewController {
 			put("Command", KeyCode.COMMAND);
 		}};
 	}
-		
-		@FXML
+	
+	@FXML
 	private void add() {
 		// Логика добавления
 		String name = nameField.getText();
@@ -345,16 +348,18 @@ public class FormViewController {
 	}
 	
 	@FXML
-	public void startRobot() {
-		double x = 520;
+	public void startRobot1() {
 		var xtage = ((Stage) addButtonForm.getScene().getWindow());
+		double x = nameField.getLayoutX() + xtage.getX() + 60;
+		double y0 = nameField.getLayoutY() + xtage.getY() + 40;
+		System.out.println(y0);
 		var IKS = xtage.getX();
 		var IGREK = ((Stage) addButtonForm.getScene().getWindow()).getY();
-		final double[] y = {266};
+		final double[] y = {y0};
 		Robot robot = new Robot();
 		robot.mouseMove(x, y[0]);
 		robot.mouseClick(MouseButton.PRIMARY);
-		Thread thread = new Thread(() -> {
+		var thread = new Thread(() -> {
 			for (int i = 0; i < 6; i++) {
 				Platform.runLater(() -> {
 					KeyCode[] keyCodes = new KeyCode[]{codesMap.get("1")};
